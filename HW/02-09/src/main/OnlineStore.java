@@ -1,36 +1,47 @@
 package main;
 
-import product.Product;
+import product.*;
 import user.User;
 import cart.Cart;
+import exception.InvalidProductException;
 
 public class OnlineStore
 {
+    public static void purchaseAll(Purchasable[] items)
+    {
+        //polymorph
+        for (Purchasable item : items) { item.purchase(); }
+    }
+
     public static void main(String[] args)
     {
         System.out.println("_____Online Store Demo_____\n");
 
-        // full demo
         User user = new User("Eli", "eli.sdev@mail.com");
         System.out.println("User created - " + user);
 
-        Product phone = new Product("iPhone 16", "Apple", 1799.99);
-        Product laptop = new Product("XPS 13", "Dell", 986.50);
-        Product book = new Product("Clean Code", "Robert C. Martin", 39.90);
+        Cart<Product> cart = new Cart<>();
 
-        Cart cart = new Cart();
+        try {
+            Product phone = new PhysicalProduct("iPhone 16", "Apple", 1799.99, 0.5);
+            Product laptop = new PhysicalProduct("XPS 13", "Dell", 986.50, 1.2);
+            Product ebook = new DigitalProduct("Clean Code", "Robert C. Martin", 39.90, 15.5);
 
-        cart.addProduct(phone);
-        cart.addProduct(laptop);
-        cart.addProduct(book);
+            cart.addProduct(phone);
+            cart.addProduct(laptop);
+            cart.addProduct(ebook);
 
-        cart.showCart();
+            cart.showCart();
+            System.out.println("Total price: $" + cart.totalPrice());
 
-        cart.removeProduct(book);
+            cart.removeProduct(ebook);
+            cart.showCart();
 
-        cart.showCart();
+            // demonstration purchaseAll
+            Purchasable[] itemsToBuy = { phone, laptop };
+            purchaseAll(itemsToBuy);
 
-        System.out.println("Total price: $" + cart.totalPrice());
+        } catch (InvalidProductException e) { System.err.println("Error: " + e.getMessage()); }
 
         System.out.println("\n____Yoohoo! End of Demo____");
     }
