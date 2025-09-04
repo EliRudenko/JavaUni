@@ -2,6 +2,8 @@ package cart;
 
 import product.Product;
 import exception.InvalidProductException;
+import exception.ProductNotFoundException;
+import exception.InvalidProductIdException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,10 +22,7 @@ public class Cart<T extends Product>
 
     public void removeProduct(T product) throws InvalidProductException
     {
-        if (!items.remove(product))
-        {
-            throw new InvalidProductException("Product not found in cart: " + product.getName());
-        }
+        if (!items.remove(product)) { throw new InvalidProductException("Product not found in cart: " + product.getName()); }
         System.out.println("Cart - Removed: " + product);
     }
 
@@ -36,6 +35,25 @@ public class Cart<T extends Product>
     }
 
     public double totalPrice() { return items.stream().mapToDouble(Product::getPrice).sum(); }
-
     public List<T> getItems() { return items; }
+
+    // inner class !!!!!!!!!
+    public class Finder
+    {
+        public T findByName(String name) throws ProductNotFoundException
+        {
+            return items.stream()
+                    .filter(p -> p.getName().equalsIgnoreCase(name))
+                    .findFirst()
+                    .orElseThrow(() -> new ProductNotFoundException("Product with name '" + name + "' not found!"));
+        }
+
+        public T findById(int id) throws InvalidProductIdException
+        {
+            return items.stream()
+                    .filter(p -> p.getId() == id)
+                    .findFirst()
+                    .orElseThrow(() -> new InvalidProductIdException("Product with ID '" + id + "' not found!"));
+        }
+    }
 }

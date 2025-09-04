@@ -3,13 +3,12 @@ package main;
 import product.*;
 import user.User;
 import cart.Cart;
-import exception.InvalidProductException;
+import exception.*;
 
 public class OnlineStore
 {
     public static void purchaseAll(Purchasable[] items)
     {
-        //polymorph
         for (Purchasable item : items) { item.purchase(); }
     }
 
@@ -34,14 +33,30 @@ public class OnlineStore
             cart.showCart();
             System.out.println("Total price: $" + cart.totalPrice());
 
+            // using nested !!
+            Product.ProductInfo info = new Product.ProductInfo(laptop);
+            System.out.println(info.getInfo());
+
+            // using inner !!
+            Cart<Product>.Finder finder = cart.new Finder();
+            System.out.println("Found by name: " + finder.findByName("iPhone 16"));
+            System.out.println("Found by ID: " + finder.findById(2));
+
+            // local !!
+            class Checkout
+            {
+                public void complete() { System.out.println("Checkout complete. Purchased " + cart.getItems().size() + " items."); }
+            }
+            Checkout checkout = new Checkout();
+            checkout.complete();
+
             cart.removeProduct(ebook);
             cart.showCart();
 
-            // demonstration purchaseAll
             Purchasable[] itemsToBuy = { phone, laptop };
             purchaseAll(itemsToBuy);
 
-        } catch (InvalidProductException e) { System.err.println("Error: " + e.getMessage()); }
+        } catch (InvalidProductException | ProductNotFoundException | InvalidProductIdException e) { System.err.println("Error: " + e.getMessage()); }
 
         System.out.println("\n____Yoohoo! End of Demo____");
     }
