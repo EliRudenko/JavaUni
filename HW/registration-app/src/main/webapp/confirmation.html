@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Подтверждение регистрации</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="container">
+    <h1>Регистрация успешна!</h1>
+    <p>Добро пожаловать, <span id="username"></span>!</p>
+    <p>Ваш email: <span id="useremail"></span></p>
+    <script>
+        // Получаем данные из сессии через сервлет
+        fetch("ConfirmationServlet")
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("username").textContent = data.name;
+                document.getElementById("useremail").textContent = data.email;
+            });
+    </script>
+</div>
+</body>
+</html>

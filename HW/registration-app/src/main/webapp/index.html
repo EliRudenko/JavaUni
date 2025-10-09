@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Регистрация</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="container">
+    <h1>Регистрация пользователя</h1>
+    <form action="RegistrationServlet" method="post">
+        <label>Имя:</label>
+        <input type="text" name="name" required>
+        <label>Email:</label>
+        <input type="email" name="email" required>
+        <label>Пароль:</label>
+        <input type="password" name="password" required>
+        <input type="submit" value="Зарегистрироваться">
+    </form>
+</div>
+</body>
+</html>

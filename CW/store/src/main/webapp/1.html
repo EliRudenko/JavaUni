@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Form</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        td {
+            padding: 10px;
+            text-align: right;
+        }
+        td:first-child {
+            font-weight: bold;
+            color: #555;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        @media (max-width: 480px) {
+            .container {
+                padding: 10px;
+                margin: 10px;
+            }
+            td {
+                display: block;
+                text-align: left;
+            }
+            input[type="text"] {
+                margin-top: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Employee Information</h1>
+    <form name="f1" method="post" action="/my_servlet_app_war_exploded/Servlet">
+        <table>
+            <tr>
+                <td>Employee</td>
+                <td><input name="emp" size="25" value="Alex" type="text"></td>
+            </tr>
+            <tr>
+                <td>Phone</td>
+                <td><input name="tel" size="25" value="0630300030" type="text"></td>
+            </tr>
+        </table>
+        <input type="submit" value="Send!">
+    </form>
+
+</div>
+</body>
+</html>
