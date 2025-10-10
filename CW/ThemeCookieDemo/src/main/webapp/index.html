@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тема сайту — Cookie Demo</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="container">
+    <h1>Вибери тему сайту</h1>
+
+    <form action="theme" method="post" id="themeForm">
+        <label>
+            <input type="radio" name="theme" value="light"> Світла тема
+        </label>
+        <label>
+            <input type="radio" name="theme" value="dark"> Темна тема
+        </label>
+        <button type="submit">Зберегти</button>
+    </form>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", async () => {
+        const res = await fetch("theme");
+        const theme = await res.text();
+
+        document.body.classList.toggle("dark", theme === "dark");
+        document.body.classList.toggle("light", theme === "light");
+
+        const radio = document.querySelector(`input[value="${theme}"]`);
+        if (radio) radio.checked = true;
+    });
+</script>
+
+</body>
+</html>
