@@ -1,0 +1,1 @@
+Place Oracle JDBC driver (ojdbc jar) into WEB-INF/lib or Tomcat's lib directory.
