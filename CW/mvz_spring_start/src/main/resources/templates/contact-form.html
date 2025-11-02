@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="${contact.id != null ? 'Редагувати контакт' : 'Додати контакт'}"></title>
+    <link rel="stylesheet" type="text/css" href="/css/form.css">
+</head>
+<body>
+<header>
+    <h1 class="page-title" th:text="${contact.id != null ? 'Редагувати контакт' : 'Додати контакт'}"></h1>
+</header>
+
+<form th:action="@{${contact.id != null ? '/contacts/edit/' + contact.id : '/contacts/add'}}"
+      th:object="${contact}" method="post" class="contact-form">
+    <input type="hidden" th:field="*{id}" />
+
+    <div class="form-group">
+        <label for="name" class="form-label">ПІБ</label>
+        <input id="name" type="text" th:field="*{name}" class="form-input" />
+    </div>
+    <div class="form-group">
+        <label for="email" class="form-label">Електронна пошта</label>
+        <input id="email" type="email" th:field="*{email}" class="form-input" />
+    </div>
+    <div class="form-group">
+        <label for="phone" class="form-label">Телефон</label>
+        <input id="phone" type="text" th:field="*{phone}" class="form-input" />
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Зберегти</button>
+    </div>
+</form>
+</body>
+</html>

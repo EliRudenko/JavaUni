@@ -1,0 +1,21 @@
+﻿<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Помилка</title>
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+</head>
+<body>
+<header>
+    <h1 class="page-title">Помилка</h1>
+    <a href="/contacts" class="btn btn-primary">Повернутися до контактів</a>
+</header>
+
+<div class="error-container">
+    <p th:text="${message}" class="error-message">
+        Невідома помилка
+    </p>
+</div>
+
+</body>
+</html>

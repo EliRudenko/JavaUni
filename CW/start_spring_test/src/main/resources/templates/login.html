@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Вход</title>
+    <style>
+        :root {
+            --bg-color: #0d1117;
+            --card-bg: #161b22;
+            --text-color: #c9d1d9;
+            --accent: #f0883e;
+            --accent-hover: #ffa657;
+        }
+        body {
+            margin: 0;
+            height: 100vh;
+            font-family: "Segoe UI", sans-serif;
+            background-color: var(--bg-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .container {
+            background-color: var(--card-bg);
+            padding: 40px 60px;
+            border-radius: 12px;
+            text-align: center;
+            max-width: 400px;
+            box-shadow: 0 0 25px rgba(0,0,0,0.4);
+        }
+        h2 { color: var(--accent); margin-bottom: 20px; }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border-radius: 6px;
+            border: 1px solid #444;
+            background-color: #0d1117;
+            color: var(--text-color);
+        }
+        button {
+            background-color: var(--accent);
+            color: #fff;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-top: 10px;
+        }
+        button:hover { background-color: var(--accent-hover); }
+        .error { color: #ff6b6b; margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>Вход</h2>
+    <div th:if="${error}" class="error" th:text="${error}"></div>
+    <form th:action="@{/login}" method="post">
+        <input type="text" name="username" placeholder="Логин" required>
+        <input type="password" name="password" placeholder="Пароль" required>
+        <button type="submit">Войти</button>
+    </form>
+</div>
+</body>
+</html>

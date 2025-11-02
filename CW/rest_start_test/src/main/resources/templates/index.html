@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Best DJs</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+</head>
+<body>
+<div class="container">
+    <h1>Best DJs</h1>
+
+    <div th:if="${error}" class="alert alert-error" th:text="${error}">Помилка!</div>
+    <div th:if="${success}" class="alert alert-success" th:text="${success}">Успіх!</div>
+
+    <div class="form-section">
+        <h2>Додати нового діджея</h2>
+        <form th:action="@{/add}" method="post">
+            <label for="name">Ім'я діджея:</label>
+            <input id="name" name="name" type="text" maxlength="50" placeholder="Введіть ім'я" required />
+
+            <label for="rank">Рейтинг популярності (має бути унікальний та > 0):</label>
+            <input id="rank" name="rank" type="number" min="1" placeholder="Введіть рейтинг числом" required />
+
+            <input type="submit" value="Додати діджея" />
+        </form>
+    </div>
+
+    <h2>Поточний список на <span th:text="${#dates.format(#dates.createNow(), 'dd.MM.yyyy')}">сьогодні</span>:</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>Рейтинг</th>
+            <th>Ім'я діджея</th>
+            <th>Дія</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="dj, stat : ${djs}">
+            <td th:text="${dj.popularityRank}"></td>
+            <td th:text="${dj.name}"></td>
+            <td>
+                <form th:action="@{/delete}" method="post" style="display:inline;">
+                    <input type="hidden" name="id" th:value="${stat.index + 1}" />
+                    <input type="submit" value="Видалити" />
+                </form>
+            </td>
+        </tr>
+        <tr th:if="${#lists.isEmpty(djs)}">
+            <td colspan="3" style="text-align: center; color: #a0aec0;">Список порожній</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

@@ -1,0 +1,137 @@
+﻿/* === Базовые стили === */
+body {
+    font-family: "Segoe UI", Roboto, Arial, sans-serif;
+    background: #f2f4f7;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* Контейнер */
+.container {
+    max-width: 900px;
+    margin: 40px auto;
+    background: #fff;
+    padding: 30px 40px;
+    border-radius: 16px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* === Заголовки === */
+h1, h2 {
+    text-align: center;
+    color: #2b3a67;
+    margin-bottom: 20px;
+}
+
+/* === Блок === */
+.block {
+    background: #f9fafc;
+    padding: 25px 30px;
+    margin-bottom: 30px;
+    border-radius: 12px;
+    border: 1px solid #e3e6ec;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+/* === Таблица пользователей === */
+.user-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    font-size: 15px;
+}
+
+.user-table th {
+    background: #2b3a67;
+    color: #fff;
+    padding: 12px;
+    text-align: left;
+}
+
+.user-table td {
+    border: 1px solid #e0e4eb;
+    padding: 10px;
+}
+
+.user-table tr:nth-child(even) {
+    background: #f3f6fa;
+}
+
+.user-table tr:hover {
+    background: #e9eef9;
+    transition: background 0.2s;
+}
+
+/* === Форма добавления пользователя === */
+.user-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.user-form label {
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.user-form input[type="text"],
+.user-form input[type="email"] {
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 15px;
+    width: 100%;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.user-form input[type="text"]:focus,
+.user-form input[type="email"]:focus {
+    border-color: #2b3a67;
+    box-shadow: 0 0 5px rgba(43, 58, 103, 0.3);
+    outline: none;
+}
+
+/* === Кнопка === */
+.submit-button {
+    background: #2b3a67;
+    color: #fff;
+    border: none;
+    padding: 12px 20px;
+    font-size: 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.25s, transform 0.1s;
+}
+
+.submit-button:hover {
+    background: #3b4b87;
+}
+
+.submit-button:active {
+    transform: scale(0.98);
+}
+
+/* === Сообщения об ошибках === */
+b {
+    color: #c0392b;
+    font-weight: 600;
+}
+
+/* === Адаптивность === */
+@media (max-width: 600px) {
+    .container {
+        padding: 20px;
+    }
+
+    .user-table th, .user-table td {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    .user-form input,
+    .submit-button {
+        font-size: 14px;
+    }
+}

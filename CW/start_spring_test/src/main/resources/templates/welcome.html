@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Добро пожаловать</title>
+    <style>
+        :root {
+            --bg-color: #0d1117;
+            --card-bg: #161b22;
+            --text-color: #c9d1d9;
+            --accent: #f0883e;
+        }
+        body {
+            margin: 0;
+            height: 100vh;
+            font-family: "Segoe UI", sans-serif;
+            background-color: var(--bg-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .container {
+            background-color: var(--card-bg);
+            padding: 40px 60px;
+            border-radius: 12px;
+            text-align: center;
+            max-width: 500px;
+            box-shadow: 0 0 25px rgba(0,0,0,0.4);
+        }
+        h2 { color: var(--accent); }
+        button {
+            background-color: var(--accent);
+            color: #fff;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-top: 20px;
+        }
+        button:hover { background-color: #ffa657; }
+        img {
+            margin-top: 20px;
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.3);
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2 th:text="'Привет, ' + ${username} + '! Вы успешно вошли'">Привет!</h2>
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRH42aupMvgYXeTKtC3kVX7UAhK9DQQJZgoYg&s" alt="Картинка">
+    <form th:action="@{/}" method="get">
+        <button type="submit">Выйти</button>
+    </form>
+</div>
+</body>
+</html>

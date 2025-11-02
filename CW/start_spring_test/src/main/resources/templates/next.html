@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Следующая страница</title>
+    <style>
+        :root {
+            --bg-color: #0d1117;
+            --card-bg: #161b22;
+            --text-color: #c9d1d9;
+            --accent: #f0883e;
+            --accent-hover: #ffa657;
+        }
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: "Segoe UI", sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: var(--card-bg);
+            padding: 40px 60px;
+            border-radius: 12px;
+            box-shadow: 0 0 25px rgba(0,0,0,0.4);
+            text-align: center;
+            max-width: 500px;
+            animation: fadeIn 0.8s ease-in;
+        }
+        h2 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+        button {
+            background-color: var(--accent);
+            color: #fff;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.3s ease;
+        }
+        button:hover {
+            background-color: var(--accent-hover);
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>Вторая страница юху</h2>
+    <form th:action="@{/}" method="get">
+        <button type="submit">Выпустите</button>
+    </form>
+</div>
+</body>
+</html>

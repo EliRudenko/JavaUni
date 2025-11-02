@@ -1,0 +1,137 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    Roboto, sans-serif;
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    color: #ffffff;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    line-height: 1.6;
+}
+
+.error-container {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 40px;
+    max-width: 500px;
+    width: 100%;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    animation: fadeIn 0.8s ease-out;
+}
+
+.error-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.error-code {
+    font-size: 4rem;
+    font-weight: 300;
+    color: #ffffff;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+}
+
+.error-subtitle {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    font-weight: 400;
+}
+
+.error-content {
+    margin-bottom: 30px;
+}
+
+.error-message {
+    font-size: 1.1rem;
+    text-align: center;
+    margin-bottom: 20px;
+    opacity: 0.95;
+}
+
+.error-details {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    padding: 15px;
+}
+
+.detail-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+}
+
+.detail-label {
+    opacity: 0.8;
+    font-weight: 500;
+}
+
+.detail-value {
+    font-family: 'Courier New', monospace;
+    opacity: 0.9;
+}
+
+.error-footer {
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 20px;
+}
+
+.back-button {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    padding: 12px 24px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 500;
+    margin-bottom: 15px;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.back-button:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.apology {
+    font-size: 0.9rem;
+    opacity: 0.7;
+    font-style: italic;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity:0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media ( max-width : 600px) {
+    .error-container {
+        padding: 30px 20px;
+        margin: 10px;
+    }
+    .error-code {
+        font-size: 3rem;
+    }
+    .detail-item {
+        flex-direction: column;
+        gap: 4px;
+    }
+}

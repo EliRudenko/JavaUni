@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Помилка сервера</title>
+    <link rel="stylesheet" th:href="@{/css/error.css}" />
+</head>
+<body>
+<div class="error-container">
+    <div class="error-header">
+        <h1 class="error-code">Упс :(</h1>
+        <p class="error-subtitle">Щось пішло не так</p>
+    </div>
+
+    <div class="error-content">
+        <p class="error-message" th:text="${message}">Виникла неочікувана помилка. Ми працюємо над виправленням.</p>
+
+        <div class="error-details">
+            <div class="detail-item">
+                <span class="detail-label">Тип помилки:</span>
+                <span class="detail-value" th:text="${type}">Невідома помилка</span>
+            </div>
+            <div class="detail-item">
+                <span class="detail-label">Час:</span>
+                <span class="detail-value" th:text="${#temporals.format(timestamp, 'dd.MM.yyyy HH:mm:ss')}">Невідомо</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="error-footer">
+        <a href="/" class="back-button">← Повернутися на головну</a>
+        <p class="apology">Вибачте за незручності. Якщо проблема повторюється, зв'яжіться з Олександром.</p>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,135 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #121212;
+    margin: 0;
+    padding: 0;
+    color: #e0e0e0;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background: #212121;
+    border-bottom: 4px solid #ff3d00;
+}
+
+h1 {
+    color: #ff6f00;
+    margin: 0;
+    font-size: 2.5em;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
+}
+
+a {
+    text-decoration: none;
+    color: #ff6f00;
+    font-weight: bold;
+    transition: color 0.3s, transform 0.3s;
+}
+
+a:hover {
+    color: #ff3d00;
+    text-decoration: underline;
+    transform: scale(1.05);
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    margin: 8px;
+    border-radius: 8px;
+    color: #fff;
+    text-align: center;
+    font-size: 1em;
+    font-weight: bold;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.btn-primary {
+    background: #212121;
+    border: 2px solid #ff6f00;
+}
+
+.btn-primary:hover {
+    background: #333;
+    border-color: #ff3d00;
+    transform: scale(1.05);
+}
+
+.btn-edit {
+    background: #333;
+    border: 2px solid #ff6f00;
+}
+
+.btn-edit:hover {
+    background: #444;
+    border-color: #ff3d00;
+    transform: scale(1.05);
+}
+
+.btn-delete {
+    background: #212121;
+    border: 2px solid #ff3d00;
+}
+
+.btn-delete:hover {
+    background: #333;
+    border-color: #ff5722;
+    transform: scale(1.05);
+}
+
+table {
+    width: 90%;
+    margin: 40px auto;
+    border-collapse: collapse;
+    background: #1e1e1e;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+thead {
+    background: #333;
+    color: #ff6f00;
+    font-size: 1.1em;
+}
+
+th, td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #444;
+}
+
+td {
+    background: #262626;
+}
+
+tr:nth-child(even) {
+    background: #2c2c2c;
+}
+
+tr:hover {
+    background: #333;
+    transition: background 0.3s;
+}
+
+
+
+.error-container {
+    width: 80%;
+    margin: 50px auto;
+    padding: 30px;
+    background: #1e1e1e;
+    border: 2px solid #ff3d00;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.error-message {
+    font-size: 1.5em;
+    color: #ff6f00;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+}

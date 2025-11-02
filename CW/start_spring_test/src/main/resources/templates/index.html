@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Добро пожаловать</title>
+    <style>
+        :root {
+            --bg-color: #0d1117;
+            --card-bg: #161b22;
+            --text-color: #c9d1d9;
+            --accent: #f0883e;
+            --accent-hover: #ffa657;
+        }
+        body {
+            margin: 0;
+            height: 100vh;
+            font-family: "Segoe UI", sans-serif;
+            background-color: var(--bg-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .container {
+            background-color: var(--card-bg);
+            padding: 40px 60px;
+            border-radius: 12px;
+            box-shadow: 0 0 25px rgba(0,0,0,0.4);
+            text-align: center;
+            max-width: 400px;
+        }
+        h1 { color: var(--accent); }
+        input {
+            width: 80%;
+            padding: 8px;
+            margin-bottom: 20px;
+            border-radius: 6px;
+            border: 1px solid #444;
+            background-color: #0d1117;
+            color: var(--text-color);
+        }
+        button {
+            background-color: var(--accent);
+            color: #fff;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        button:hover { background-color: var(--accent-hover); }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Добро пожаловать!</h1>
+    <form th:action="@{/next}" method="get">
+        <input type="text" name="username" placeholder="Введите ваше имя" required>
+        <br>
+        <button type="submit">Перейти</button>
+    </form>
+</div>
+</body>
+</html>
