@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>CRUD операції</title>
+		<link rel="stylesheet" href="style.css">
+		<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+	</head>
+	<body>
+	
+	<h1>Тест CRUD операцій</h1>
+	
+	<div class="form-grid">
+	<!-- створення студента -->
+	<form id="createForm" action="/students" method="post">
+		<h2>Створити студента</h2>
+		<label for="createName">Ім'я:</label> <input type="text"
+		id="createName" name="name" placeholder="Введіть ім'я" required>
+		<label for="createEmail">Email:</label> <input type="email"
+		id="createEmail" name="email" placeholder="Введіть email" required>
+		<button type="submit">Створити студента</button>
+	</form>
+
+
+    <!-- Додати курс студенту -->
+    <form id="addCourseForm">
+        <h2>Додати курс студенту</h2>
+        <label for="studentIdCourse">ID студента:</label>
+        <input type="text" id="studentIdCourse" placeholder="Введіть ID студента" required>
+
+        <label for="courseName">Назва курсу:</label>
+        <input type="text" id="courseName" placeholder="Введіть назву курсу" required>
+
+        <button type="submit">Додати курс</button>
+    </form>
+
+
+
+        <!-- читання студента -->
+	<form id="readForm" action="/students" method="get">
+		<h2>Прочитати дані за ID</h2>
+		<label for="readId">ID:</label> <input type="text" id="readId"
+		name="id" placeholder="Введіть ID для читання" required>
+		<button type="submit">Прочитати дані</button>
+	</form>
+	
+	<!-- оновлення студента -->
+	<form id="updateForm" action="/students" method="post">
+		<h2>Оновити студента</h2>
+		<input type="hidden" name="_method" value="PUT"> <label
+		for="updateId">ID:</label> <input type="text" id="updateId"
+		name="id" placeholder="Введіть ID для оновлення" required>
+		<label for="updateName">Нове ім'я:</label> <input type="text"
+		id="updateName" name="name" placeholder="Введіть нове ім'я" required>
+		<label for="updateEmail">Новий Email:</label> <input type="email"
+		id="updateEmail" name="email" placeholder="Введіть новий email"
+		required>
+		<button type="submit">Оновити студента</button>
+	</form>
+	
+	<!-- видалення студента -->
+	
+	<form id="deleteForm" action="/students/delete" method="post">
+		<h2>Видалити студента</h2>
+		<label for="deleteId">ID:</label> <input type="text" id="deleteId"
+		name="id" placeholder="Введіть ID для видалення" required>
+		<button type="submit">Видалити студента</button>
+		</form>
+	</div>
+	
+	<div id="result">
+		<h3>Результат</h3>
+		<p id="resultText">Поки жодних дій не виконано.</p>
+	</div>
+
+    <div class="form-grid">
+        <button id="countByCourseBtn">Показати кількість студентів по курсах</button>
+    </div>
+
+    <div class="form-grid">
+        <h2>Пошук студентів з пагінацією</h2>
+
+        <label>Ім'я для пошуку:</label>
+        <input type="text" id="searchName" placeholder="Введіть ім'я">
+
+        <label>Сортування:</label>
+        <select id="searchSort">
+            <option value="name">Name</option>
+            <option value="email">Email</option>
+        </select>
+
+        <button id="searchBtn">Пошук</button>
+
+        <div>
+            <button id="prevPageBtn">Попередня сторінка</button>
+            <button id="nextPageBtn">Наступна сторінка</button>
+            <span id="pageInfo"></span>
+        </div>
+    </div>
+
+
+    <script>
+	        // створення студента
+	        document.getElementById('createForm').addEventListener('submit', function(event) {
+	            event.preventDefault();
+	            const formData = new FormData(this);
+	
+	            fetch(this.action, {
+	                method: 'POST',
+	                body: formData
+	            })
+	            .then(response => {
+	                if (!response.ok) throw new Error('Помилка при створенні студента');
+	                return response.text();
+	            })
+	            .then(message => {
+	                document.getElementById('resultText').textContent = message;
+	            })
+	            .catch(error => {
+	                document.getElementById('resultText').textContent = error.message;
+	            });
+	        });
+
+
+            // додавання курсу студенту
+            document.getElementById('addCourseForm').addEventListener('submit', function(event) {
+                event.preventDefault();
+                const studentId = document.getElementById('studentIdCourse').value;
+                const courseName = document.getElementById('courseName').value;
+
+                // создаём FormData вместо JSON
+                const formData = new FormData();
+                formData.append("title", courseName); // название курса
+
+                fetch(`/students/${studentId}/courses`, {
+                    method: 'POST',
+                    body: formData
+                })
+                    .then(response => {
+                        if (!response.ok) throw new Error('Помилка при додаванні курсу студенту');
+                        return response.text();
+                    })
+                    .then(message => {
+                        document.getElementById('resultText').textContent = message;
+                    })
+                    .catch(error => {
+                        document.getElementById('resultText').textContent = error.message;
+                    });
+            });
+
+
+
+
+            // додавання курсу студенту
+            document.getElementById('addCourseForm').addEventListener('submit', function(event) {
+                event.preventDefault();
+
+                const studentId = document.getElementById('studentIdCourse').value;
+                const courseName = document.getElementById('courseName').value;
+
+                // створюємо FormData
+                const formData = new FormData();
+                formData.append("title", courseName); // ключ повинен відповідати параметру @RequestParam в контролері
+
+                fetch(`/students/${studentId}/courses`, {
+                    method: 'POST',
+                    body: formData
+                })
+                    .then(response => {
+                        if (!response.ok) throw new Error('Помилка при додаванні курсу студенту');
+                        return response.text();
+                    })
+                    .then(message => {
+                        document.getElementById('resultText').textContent = message;
+                    })
+                    .catch(error => {
+                        document.getElementById('resultText').textContent = error.message;
+                    });
+            });
+
+
+
+            // оновлення студента
+	        document.getElementById('updateForm').addEventListener('submit', function(event) {
+	            event.preventDefault();
+	            const formData = new FormData(this);
+	            const id = document.getElementById('updateId').value;
+	
+	            // отримання старих даних
+	            fetch(`/students?id=${id}`)
+	                .then(response => {
+	                    if (!response.ok) throw new Error('Студент не знайдений');
+	                    return response.json();
+	                })
+	                .then(oldData => {
+	                    // оновлюємо
+	                    fetch(this.action, {
+	                        method: 'POST',
+	                        body: formData
+	                    })
+	                    .then(response => {
+	                        if (!response.ok) throw new Error('Помилка при оновленні студента');
+	                        return response.text();
+	                    })
+	                    .then(newMessage => {
+	                        // нові дані для відображення
+	                        const newName = document.getElementById('updateName').value;
+	                        const newEmail = document.getElementById('updateEmail').value;
+	                        // показуємо старі та нові дані
+	                        document.getElementById('resultText').innerHTML = `
+	                            <strong>Студент оновлений:</strong><br>
+	                            <strong>Було:</strong><br>
+	                            Ім'я: ${oldData.name}<br>
+	                            Email: ${oldData.email}<br>
+	                            <strong>Нові дані:</strong><br>
+	                            Ім'я: ${newName}<br>
+	                            Email: ${newEmail}
+	                        `;
+	                    });
+	                })
+	                .catch(error => {
+	                    document.getElementById('resultText').textContent = error.message;
+	                });
+	        });
+	
+	        // видалення студента
+	        document.getElementById('deleteForm').addEventListener('submit', handleDelete);
+	
+	        // читання студента та заповнення форми для оновлення
+	        document.getElementById('readForm').addEventListener('submit', function(event) {
+	            event.preventDefault();
+	            const id = document.getElementById('readId').value;
+	
+	            fetch(`/students?id=${id}`)
+	                .then(response => {
+	                    if (!response.ok) throw new Error('Студент не знайдений');
+	                    return response.json();
+	                })
+	                .then(data => {
+	                    // відображаємо дані студента в результаті та заповнюємо поля для оновлення
+	                    document.getElementById('resultText').innerHTML = `
+	                        Ім'я: ${data.name}<br>
+	                        Email: ${data.email}
+	                    `;
+	
+	                    // заповнюємо поля форми для оновлення
+	                    document.getElementById('updateId').value = id;
+	                    document.getElementById('updateName').value = data.name;
+	                    document.getElementById('updateEmail').value = data.email;
+	                })
+	                .catch(error => {
+	                    document.getElementById('resultText').textContent = error.message;
+	                });
+	        });
+	
+	        function handleDelete(event) {
+	            event.preventDefault(); // скасування стандартної поведінки форми
+	            const form = event.target;
+	            const formData = new FormData(form);
+	
+	            fetch(form.action, {
+	                method: 'POST',
+	                body: formData
+	            })
+	            .then(response => {
+	                if (!response.ok) throw new Error('Помилка при видаленні студента');
+	                return response.text();
+	            })
+	            .then(message => {
+	                document.getElementById('resultText').textContent = message; // відображаємо повідомлення в div
+	            })
+	            .catch(error => {
+	                document.getElementById('resultText').textContent = error.message; // відображаємо помилку
+	            });
+	        }
+
+
+            document.getElementById('countByCourseBtn').addEventListener('click', function() {
+                fetch('/students/count-by-course')
+                    .then(response => {
+                        if (!response.ok) throw new Error('Помилка при отриманні даних');
+                        return response.json();
+                    })
+                    .then(data => {
+                        let html = '<h3>Кількість студентів по курсах:</h3><ul>';
+                        for (const [course, count] of Object.entries(data)) {
+                            html += `<li>${course}: ${count}</li>`;
+                        }
+                        html += '</ul>';
+                        document.getElementById('resultText').innerHTML = html;
+                    })
+                    .catch(error => {
+                        document.getElementById('resultText').textContent = error.message;
+                    });
+            });
+
+            // Показати кількість студентів по курсам
+            document.getElementById('countByCourseBtn').addEventListener('click', function() {
+                fetch('/students/count-by-course')
+                    .then(response => response.json())
+                    .then(data => {
+                        let html = '<h3>Кількість студентів по курсах:</h3><ul>';
+                        for (const [course, count] of Object.entries(data)) {
+                            html += `<li>${course}: ${count}</li>`;
+                        }
+                        html += '</ul>';
+                        document.getElementById('resultText').innerHTML = html;
+                    });
+            });
+
+            let currentPage = 0;
+            const pageSize = 5; // фиксированное количество студентов на странице
+
+            function loadStudents() {
+                const name = document.getElementById('searchName').value;
+                const sort = document.getElementById('searchSort').value;
+
+                fetch(`/students/search-paginated?name=${name}&page=${currentPage}&size=${pageSize}&sort=${sort}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        let html = '<h3>Результати пошуку:</h3><ul>';
+                        data.content.forEach(student => {
+                            html += `<li>ID: ${student.id}, Name: ${student.name}, Email: ${student.email}</li>`;
+                        });
+                        html += '</ul>';
+                        document.getElementById('resultText').innerHTML = html;
+
+                        // Обновляем информацию о странице
+                        document.getElementById('pageInfo').textContent = `Сторінка ${data.number + 1} з ${data.totalPages}`;
+                    });
+            }
+
+            document.getElementById('searchBtn').addEventListener('click', () => {
+                currentPage = 0; // при новом поиске возвращаемся на первую страницу
+                loadStudents();
+            });
+
+            document.getElementById('prevPageBtn').addEventListener('click', () => {
+                if (currentPage > 0) {
+                    currentPage--;
+                    loadStudents();
+                }
+            });
+
+            document.getElementById('nextPageBtn').addEventListener('click', () => {
+                currentPage++;
+                loadStudents();
+            });
+	    </script>
+	</body>
+</html>

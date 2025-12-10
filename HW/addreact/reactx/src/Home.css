@@ -1,0 +1,104 @@
+.app-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-gradient);
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.form-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(20px);
+    border-radius: 24px;
+    padding: 48px 40px;
+    width: 100%;
+    max-width: 480px;
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    position: relative;
+    z-index: 1;
+    animation: slideUp 0.6s ease-out;
+    text-align: center;
+}
+
+.form-title {
+    color: var(--text-primary);
+    margin-bottom: 24px;
+    font-size: 28px;
+    font-weight: 700;
+}
+
+p {
+    color: var(--text-secondary);
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.submit-btn {
+    display: inline-block;
+    text-align: center;
+    padding: 14px 24px;
+    background: var(--primary-gradient);
+    color: white;
+    border-radius: 16px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.submit-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.submit-btn:hover::before {
+    left: 100%;
+}
+
+.submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
+}
+
+@media (max-width: 480px) {
+    .form-card {
+        padding: 32px 24px;
+        margin: 10px;
+    }
+
+    .form-title {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    .submit-btn {
+        padding: 12px 20px;
+        font-size: 14px;
+    }
+}
+
+.button-group {
+    display: flex;
+    justify-content: center; /* по центру */
+    gap: 16px; /* расстояние между кнопками */
+    flex-wrap: wrap; /* кнопки переносятся на маленьких экранах */
+    margin-top: 20px; /* отступ сверху */
+}
+
+.button-group .submit-btn {
+    flex: 1 1 140px; /* одинаковая ширина кнопок и адаптивность */
+    text-align: center;
+}
