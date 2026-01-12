@@ -1,0 +1,106 @@
+[
+    {
+        "merged": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.example.ratedialogapp-debug-36:\\mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.example.ratedialogapp-main-38:\\mipmap-hdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.example.ratedialogapp-debug-36:\\drawable_star_full.xml.flat",
+        "source": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.example.ratedialogapp-main-38:\\drawable\\star_full.xml"
+    },
+    {
+        "merged": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.example.ratedialogapp-debug-36:\\mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.example.ratedialogapp-main-38:\\mipmap-xxxhdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.example.ratedialogapp-debug-36:\\drawable_ic_star_filled.xml.flat",
+        "source": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.example.ratedialogapp-main-38:\\drawable\\ic_star_filled.xml"
+    },
+    {
+        "merged": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.example.ratedialogapp-debug-36:\\xml_data_extraction_rules.xml.flat",
+        "source": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.example.ratedialogapp-main-38:\\xml\\data_extraction_rules.xml"
+    },
+    {
+        "merged": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.example.ratedialogapp-debug-36:\\xml_backup_rules.xml.flat",
+        "source": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.example.ratedialogapp-main-38:\\xml\\backup_rules.xml"
+    },
+    {
+        "merged": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.example.ratedialogapp-debug-36:\\mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.example.ratedialogapp-main-38:\\mipmap-anydpi-v26\\ic_launcher.xml"
+    },
+    {
+        "merged": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.example.ratedialogapp-debug-36:\\layout_dialog_feedback.xml.flat",
+        "source": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.example.ratedialogapp-main-38:\\layout\\dialog_feedback.xml"
+    },
+    {
+        "merged": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.example.ratedialogapp-debug-36:\\drawable_ic_launcher_foreground.xml.flat",
+        "source": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.example.ratedialogapp-main-38:\\drawable\\ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.example.ratedialogapp-debug-36:\\mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.example.ratedialogapp-main-38:\\mipmap-xxhdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.example.ratedialogapp-debug-36:\\mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.example.ratedialogapp-main-38:\\mipmap-xhdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.example.ratedialogapp-debug-36:\\mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.example.ratedialogapp-main-38:\\mipmap-xxxhdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.example.ratedialogapp-debug-36:\\drawable_ic_star_outline.xml.flat",
+        "source": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.example.ratedialogapp-main-38:\\drawable\\ic_star_outline.xml"
+    },
+    {
+        "merged": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.example.ratedialogapp-debug-36:\\mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.example.ratedialogapp-main-38:\\mipmap-xxhdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.example.ratedialogapp-debug-36:\\drawable_ic_launcher_background.xml.flat",
+        "source": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.example.ratedialogapp-main-38:\\drawable\\ic_launcher_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.example.ratedialogapp-debug-36:\\drawable_bg_input.xml.flat",
+        "source": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.example.ratedialogapp-main-38:\\drawable\\bg_input.xml"
+    },
+    {
+        "merged": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.example.ratedialogapp-debug-36:\\drawable_star_empty.xml.flat",
+        "source": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.example.ratedialogapp-main-38:\\drawable\\star_empty.xml"
+    },
+    {
+        "merged": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.example.ratedialogapp-debug-36:\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.example.ratedialogapp-main-38:\\mipmap-anydpi-v26\\ic_launcher_round.xml"
+    },
+    {
+        "merged": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.example.ratedialogapp-debug-36:\\mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.example.ratedialogapp-main-38:\\mipmap-mdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.example.ratedialogapp-debug-36:\\mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.example.ratedialogapp-main-38:\\mipmap-hdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.example.ratedialogapp-debug-36:\\mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.example.ratedialogapp-main-38:\\mipmap-mdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.example.ratedialogapp-debug-36:\\layout_dialog_rate.xml.flat",
+        "source": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.example.ratedialogapp-main-38:\\layout\\dialog_rate.xml"
+    },
+    {
+        "merged": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.example.ratedialogapp-debug-36:\\layout_activity_main.xml.flat",
+        "source": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.example.ratedialogapp-main-38:\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.example.ratedialogapp-debug-36:\\drawable_ratingbar_custom.xml.flat",
+        "source": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.example.ratedialogapp-main-38:\\drawable\\ratingbar_custom.xml"
+    },
+    {
+        "merged": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.example.ratedialogapp-debug-36:\\mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.example.ratedialogapp-main-38:\\mipmap-xhdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.ratedialogapp-debug-36:/layout_activity_main.xml.flat",
+        "source": "com.example.ratedialogapp-main-38:/layout/activity_main.xml"
+    }
+]

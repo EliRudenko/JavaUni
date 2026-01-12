@@ -1,0 +1,19 @@
+R_DEF: Internal format may change without notice
+local
+color black
+color white
+drawable ic_launcher_background
+drawable ic_launcher_foreground
+drawable wall1
+drawable wall2
+drawable wall3
+id btnStart
+id btnStop
+layout activity_main
+mipmap ic_launcher
+mipmap ic_launcher_round
+string app_name
+style Base.Theme.WallpaperManager
+style Theme.WallpaperManager
+xml backup_rules
+xml data_extraction_rules

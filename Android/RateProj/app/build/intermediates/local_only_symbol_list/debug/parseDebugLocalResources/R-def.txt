@@ -1,0 +1,29 @@
+R_DEF: Internal format may change without notice
+local
+color app_bg
+color text_primary
+color text_secondary
+drawable bg_input
+drawable ic_launcher_background
+drawable ic_launcher_foreground
+drawable ic_star_filled
+drawable ic_star_outline
+drawable ratingbar_custom
+drawable star_empty
+drawable star_full
+id btnReset
+id btnShowNow
+id edtFeedback
+id ratingBar
+id txtHint
+id txtTitle
+layout activity_main
+layout dialog_feedback
+layout dialog_rate
+mipmap ic_launcher
+mipmap ic_launcher_round
+string app_name
+style Base.Theme.RateDialogApp
+style Theme.RateDialogApp
+xml backup_rules
+xml data_extraction_rules
