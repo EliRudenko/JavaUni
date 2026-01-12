@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="tg_bg">#FF17212B</color>
+    <color name="tg_divider">#FF24303C</color>
+
+    <color name="tg_text_primary">#FFFFFFFF</color>
+    <color name="tg_text_secondary">#FF8A9AA5</color>
+    <color name="tg_time">#FF6D7D88</color>
+
+    <color name="tg_accent">#FF2AABEE</color>
+    <color name="tg_badge_bg">#FF2AABEE</color>
+    <color name="tg_badge_text">#FFFFFFFF</color>
+
+    <color name="tg_avatar_bg">#FF2B3A48</color>
+
+    <color name="tg_avatar_1">#FF5A9BD5</color>
+    <color name="tg_avatar_2">#FF7E57C2</color>
+    <color name="tg_avatar_3">#FF26A69A</color>
+    <color name="tg_avatar_4">#FFFF7043</color>
+    <color name="tg_avatar_5">#FFEC407A</color>
+    <color name="tg_avatar_6">#FF8D6E63</color>
+</resources>

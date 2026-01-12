@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/tg_bg"
+    android:fitsSystemWindows="true">
+
+    <TextView
+        android:id="@+id/txtDebug"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Loaded: ..."
+        android:textColor="@color/tg_text_primary"
+        android:textSize="14sp"
+        android:padding="12dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Chats"
+        android:textColor="@color/tg_text_primary"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:paddingBottom="10dp" />
+
+    <ListView
+        android:id="@+id/listChats"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="0dp"
+        android:cacheColorHint="@android:color/transparent"
+        android:listSelector="@android:color/transparent" />
+</LinearLayout>
