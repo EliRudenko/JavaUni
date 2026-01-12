@@ -1,0 +1,21 @@
+R_DEF: Internal format may change without notice
+local
+color black
+color white
+drawable ic_launcher_background
+drawable ic_launcher_foreground
+id cardChart
+id lineChart
+id txtHeader
+id txtMarkerTitle
+id txtMarkerValue
+id txtSub
+layout activity_main
+layout marker_view
+mipmap ic_launcher
+mipmap ic_launcher_round
+string app_name
+style Base.Theme.ChartApp
+style Theme.ChartApp
+xml backup_rules
+xml data_extraction_rules
