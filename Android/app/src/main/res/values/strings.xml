@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Cat</string>
+    <string name="main_hello_cat">Hello cat!</string>
+
+    <string name="song_title">The Death of Peace of Mind</string>
+    <string name="song_subtitle">Bad Omens · 2022</string>
+    <string name="song_instruction">
+        Tap the button to hear the next verse or chorus in the toast.
+    </string>
+
+    <string name="start_section_button">Start the verse</string>
+    <string name="next_section_button">Next verse</string>
+</resources>

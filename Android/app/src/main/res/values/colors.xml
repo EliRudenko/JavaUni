@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="purple">#9B61E4</color>
+    <color name="green">#8BC34A</color>
+    <color name="orange">#FFC107</color>
+    <color name="deep_red">#2B0A0D</color>
+    <color name="button_background">#4A1015</color>
+    <color name="button_text">#F4E4E4</color>
+    <color name="title_text">#F6DADA</color>
+    <color name="body_text">#D8BABA</color>
+    <color name="toast_background">#5C151B</color>
+    <color name="toast_text">#F9EFEF</color>
+</resources>

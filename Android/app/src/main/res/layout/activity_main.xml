@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/deep_red"
+    android:padding="24dp"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/titleText"
+        android:layout_width="403dp"
+        android:layout_height="83dp"
+        android:fontFamily="sans-serif-black"
+        android:letterSpacing="0.06"
+        android:text="@string/song_title"
+        android:textAllCaps="true"
+        android:textColor="@color/title_text"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/artistText"
+        android:layout_width="403dp"
+        android:layout_height="63dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/song_subtitle"
+        android:textColor="@color/body_text"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/titleText" />
+
+    <TextView
+        android:id="@+id/descriptionText"
+        android:layout_width="412dp"
+        android:layout_height="144dp"
+        android:layout_marginTop="56dp"
+        android:text="@string/song_instruction"
+        android:textColor="@color/body_text"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/artistText" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="232dp"
+        android:backgroundTint="@color/button_background"
+        android:fontFamily="sans-serif-medium"
+        android:onClick="f"
+        android:text="@string/start_section_button"
+        android:textColor="@color/button_text"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/descriptionText"
+        tools:ignore="OnClick" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
