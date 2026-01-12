@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Cat</string>
+    <string name="main_hello_cat">Hello cat!</string>
+</resources>
