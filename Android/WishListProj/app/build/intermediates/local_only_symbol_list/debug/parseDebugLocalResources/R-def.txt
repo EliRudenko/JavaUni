@@ -1,0 +1,36 @@
+R_DEF: Internal format may change without notice
+local
+color accent
+color bg
+color iconBg
+color stroke
+color textPrimary
+color textSecondary
+drawable bg_image_round
+drawable ic_launcher_background
+drawable ic_launcher_foreground
+id bottomCard
+id check
+id img
+id recycler
+id txtName
+id txtPrice
+id txtSubtitle
+id txtTitle
+id txtTotal
+layout activity_main
+layout item_wish
+mipmap ic_launcher
+mipmap ic_launcher_round
+string app_name
+style RoundedImage
+style ShapeAppearanceOverlay
+style ShapeAppearanceOverlay.Material3
+style ShapeAppearanceOverlay.Material3.Corner
+style ShapeAppearanceOverlay.Material3.Corner.Full
+style ShapeAppearanceOverlay.MaterialComponents
+style ShapeAppearanceOverlay.MaterialComponents.Corner
+style ShapeAppearanceOverlay.MaterialComponents.Corner.Medium
+style Theme.WishListApp2
+xml backup_rules
+xml data_extraction_rules
