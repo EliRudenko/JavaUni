@@ -7,19 +7,25 @@ import sys
 import hashlib
 import dao.helper as helper
 
+# ДЗ 1, 2 — PBKDF2 + регистрация с датой рождения.
+# DAO слой: доступ к БД, KDF, регистрация и аутентификация.
+
 class DataAccessor:
     def __init__(self, ini_file: str = './db.json'):
+        # Читаем параметры подключения из JSON-конфига.
         try:
             with open(ini_file, 'r', encoding='utf-8') as f:
                 self.ini = json.load(f)
         except OSError as err:
             raise RuntimeError("Неможливо продовжити без конфігурації бази даних.")
         try:
+            # Подключаемся к MySQL.
             self.db_connection = mysql.connector.connect(**self.ini)
         except mysql.connector.Error as err:
             raise RuntimeError("Неможливо продовжити без підключення до бази даних.")
     
     def install(self):
+        # Создаём все таблицы, которые нужны проекту.
         try:
             self._install_users()
             self._install_roles()
@@ -29,6 +35,8 @@ class DataAccessor:
             print(err)
 
     def _install_users(self):
+        # Создание таблицы users (если таблица уже есть — запрос просто не меняет структуру).
+        # Важно: поле user_datebirth хранит дату рождения (может быть NULL).
         sql = '''
         CREATE TABLE IF NOT EXISTS users (
             user_id            CHAR(36)     NOT NULL PRIMARY KEY DEFAULT (UUID()),
@@ -50,6 +58,7 @@ class DataAccessor:
                 print("Таблиця users успішно створена або вже існує.")
     
     def _install_roles(self):
+        # Создание таблицы ролей.
         sql = '''
         CREATE TABLE IF NOT EXISTS roles (
             role_id          VARCHAR(16)  NOT NULL PRIMARY KEY,
@@ -71,6 +80,8 @@ class DataAccessor:
                 print("Таблиця user_roles успішно створена або вже існує.")
 
     def _install_accesses(self):
+        # Таблица доступов (логин + соль + derived key).
+        # Здесь используется derived key по RFC2898 (PBKDF2), результат хранится в user_access_dk.
         sql = '''
         CREATE TABLE IF NOT EXISTS accesses (
             access_id    CHAR(36)  NOT NULL PRIMARY KEY DEFAULT (UUID()),
@@ -93,6 +104,7 @@ class DataAccessor:
                 print("Таблиця user_accesses успішно створена або вже існує.")
 
     def _install_tokens(self):
+        # Таблица токенов (для JWT/сессий).
         sql = '''
         CREATE TABLE IF NOT EXISTS tokens (
             token_id    CHAR(36)  NOT NULL PRIMARY KEY DEFAULT (UUID()),
@@ -113,11 +125,13 @@ class DataAccessor:
                 print("Таблиця tokens успішно створена або вже існує.")
     
     def _hash(self, input: str,) -> str:
+        # Базовая хеш-функция для KDF1 (SHA3-256).
         hash = hashlib.sha3_256()
         input = hash.update(input.encode('utf-8'))
         return hash.hexdigest()
     
     def kdf1(self, password: str, salt: str) -> str:
+        # Простейший KDF (итеративный хеш), используется для сравнения в БД.
         iterations = 1000
         dk_len = 20
         t = self._hash(password + salt)
@@ -126,10 +140,13 @@ class DataAccessor:
         return t[:dk_len]
     
     def _int_to_4be(self, i: int) -> bytes:
+        # Служебная функция для PBKDF2: конвертация int -> 4 bytes (big-endian).
         return i.to_bytes(4, byteorder='big')
     
     def pbkdf2_hmac_custom(self, password: str, salt: str,
                            hash_name: str = 'sha256') -> str:
+        # Реализация PBKDF2 (RFC2898) без использования hashlib.pbkdf2_hmac.
+        # Алгоритм: U1 XOR U2 XOR ... Ui, где Ui = HMAC(password, U(i-1)).
         iterations = 1000
         dklen = 20
         password_bytes = password.encode('utf-8')
@@ -157,6 +174,7 @@ class DataAccessor:
         return dk[:dklen // 2].hex()
     
     def _seed_roles(self):
+        # Начальные роли (admin + user), чтобы система была рабочей сразу.
         sql = '''
         INSERT INTO roles (
             role_id,
@@ -190,6 +208,7 @@ class DataAccessor:
                 print("Таблиця tokens успішно створена або вже існує.")
 
     def get_id_identity(self) -> str:
+        # Берем UUID напрямую из БД, чтобы совпадал формат.
         sql = "SELECT uuid()"
         if self.db_connection is None:
             raise RuntimeError("Немає підключення до бази даних" + sys._getframe().f_code.co_name)
@@ -201,6 +220,7 @@ class DataAccessor:
                 print(f"Помилка виконання запиту: {err}")
 
     def _seed_users(self):
+        # Начальный пользователь-администратор.
         id = "f7335c2f-bf51-11f0-95f7-0250f2882c00"
         sql = '''
         INSERT INTO users (
@@ -257,6 +277,7 @@ class DataAccessor:
                 print("Таблиця accesses успішно створена або вже існує.")
     
     def seed(self):
+        # Полное заполнение "семенами" (roles + users).
         try:
             self._seed_roles()
             self._seed_users()
@@ -264,6 +285,7 @@ class DataAccessor:
             print(err)
 
     def authenticate(self, login: str, password: str) -> dict | None:
+        # Аутентификация: сравниваем derived key из БД с текущим derived key.
         sql = '''SELECT *
                 FROM users u
                 JOIN accesses a ON a.user_id = u.user_id
@@ -285,10 +307,12 @@ class DataAccessor:
     
     def register_user(self, name: str, email: str,
                       login: str, password: str, birthdate: str|None = None) -> bool:
+        # Регистрация пользователя с опциональной датой рождения.
         birthdate_value = None
         if birthdate and birthdate.strip():
             try:
                 parsed = datetime.strptime(birthdate, "%Y-%m-%d")
+                # Дополнительно запрещаем будущую дату рождения.
                 if parsed > datetime.now():
                     raise ValueError("Дата народження не може бути з майбутнього")
                 birthdate_value = parsed.strftime("%Y-%m-%d")

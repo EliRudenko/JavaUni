@@ -4,12 +4,20 @@ import uuid
 
 from models.request import CgiRequest
 
+# ДЗ 10, 11 — Валидация JWT, nested JWT по cty=JWT, проверка claims.
+# Этот файл — "конспект" по JWT: подпись, base64url, time-claims.
+
 
 def jwt_payload_from_request(request:CgiRequest, required: bool=False) -> dict|None:
 
     try:
+        # 1) Извлекаем Bearer-токен из заголовка.
+        # 2) Декодируем JWT и проверяем подпись.
         payload = get_payload_from_jwt(get_bearer(request))
+        # 3) Проверяем время жизни (iat/nbf/exp).
         validate_jwt_time(payload)
+        # 4) Проверяем claims (sub/iss/name/email).
+        validate_jwt_claims(payload)
     except ValueError as e:
         if required:
             raise ValueError(str(e))
@@ -19,6 +27,9 @@ def jwt_payload_from_request(request:CgiRequest, required: bool=False) -> dict|N
     
 
 def validate_jwt_time(payload:dict, max_time:int=1000) -> None:
+    # Валидация стандартных временных полей JWT.
+    # Здесь мы контролируем: "токен не из будущего", "токен не просрочен",
+    # и что максимальная длительность жизни не превышена.
     if not ("iat" in payload or "nbf" in payload or "exp" in payload):
         raise ValueError("Token must include 'iat' and at least one of 'nbf' or 'exp'")
     now = datetime.datetime.now().timestamp()
@@ -36,6 +47,8 @@ def validate_jwt_time(payload:dict, max_time:int=1000) -> None:
             raise ValueError("Max validity time exceeded")
 
 def validate_jwt_claims(payload: dict, issuer: str = "Server-KN-P-221") -> None:
+    # Проверяем обязательные поля, формат UUID и соответствие issuer.
+    # Данные проверки нужны для учебного задания по расширенной валидации.
     if "sub" not in payload:
         raise ValueError("Token must include 'sub' claim")
 
@@ -53,8 +66,17 @@ def validate_jwt_claims(payload: dict, issuer: str = "Server-KN-P-221") -> None:
     if not ("name" in payload or "email" in payload):
         raise ValueError("Token must include at least one of: 'name' or 'email'")
 
+    # Дополнительная проверка email, если он есть.
+    if "email" in payload:
+        if not isinstance(payload["email"], str):
+            raise ValueError("'email' must be a string")
+        email_re = re.compile(r"^[^@\s]+@[^@\s]+\.[^@\s]+$")
+        if not email_re.match(payload["email"]):
+            raise ValueError("Invalid email format")
+
 
 def get_bearer(request:CgiRequest) -> str:
+    # Извлекаем Bearer-токен (используется для JWT).
     auth_header = request.headers.get("Authorization", None)
     if not auth_header:
         raise ValueError("Unauthorized: Missing 'Authorization' header")
@@ -67,6 +89,8 @@ def get_bearer(request:CgiRequest) -> str:
 
 
 def get_payload_from_jwt(jwt:str) -> dict:
+    # Проверка формата JWT (header.payload.signature)
+    # Если формат нарушен — сразу отдаём понятную ошибку.
     if '.' not in jwt:
         raise ValueError("Invalid token format (missing parts separator)")
     
@@ -91,7 +115,8 @@ def get_payload_from_jwt(jwt:str) -> dict:
     if not joseHeader["alg"] in ("HS256", "HS384", "HS512",):
         raise ValueError("Invalid token header data (unsupported 'alg ' field)")
     
-    #checking signature 
+    # Проверка подписи JWT.
+    # Сверяем подпись, чтобы убедиться, что токен не подменён.
     if len(jwtSplitted) != 3:
         raise ValueError("Invalid token format (invalid parts count)")
     signedPart = jwtSplitted[0] + '.' + jwtSplitted[1]
@@ -99,13 +124,15 @@ def get_payload_from_jwt(jwt:str) -> dict:
 
     if testSignature != jwtSplitted[2]:
         raise ValueError("Unauthorized: Invalid token signature")
-    #decoding payload
+    # Декодирование payload.
+    # Если payload — это строка (nested JWT), обработаем отдельно.
     try:
         payload = b64_to_obj(jwtSplitted[1])
     except ValueError:
         payload_raw = base64.urlsafe_b64decode(jwtSplitted[1]).decode("utf-8")
 
         if joseHeader.get("cty") == "JWT":
+            # Вложенный JWT: продолжаем разбор по стандарту (ДЗ №10).
             return get_payload_from_jwt(payload_raw)
 
         raise ValueError("Invalid token payload")
@@ -126,6 +153,7 @@ def get_payload_from_jwt(jwt:str) -> dict:
 
 
 def b64_to_obj(input:str) -> dict:
+        # Универсальная функция: перевод Base64URL -> JSON объект.
         non64char = re.compile(r'[^a-zA-Z0-9\-\_=]')
         if re.search(non64char, input) != None:
             raise ValueError(f"invalid non-base64 character `{input}`")
@@ -147,6 +175,7 @@ def b64_to_obj(input:str) -> dict:
 
 
 def compose_jwt(payload:dict, typ:str="JWT", header:dict|None = None, alg:str = "HS256", secret_key:bytes|None = None) -> str:
+    # Создаём JWT: base64url(header) + base64url(payload) + signature.
     header = {
         "alg": alg,
         "typ": typ
