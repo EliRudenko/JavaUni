@@ -1,3 +1,4 @@
+<!-- ДЗ 8, 9, 12 — тесты ошибок, вывод header JWT, итоговая сводка -->
 <h1>Випробування API: User</h1>
 <table>
     <thead>
@@ -55,6 +56,24 @@
             </td>
             <td id="api-malformed-credentials-result"></td>
         </tr>
+        <tr>
+            <td>
+                <button id="api-401-padding-error-btn">GET Padding error button</button>
+            </td>
+            <td id="api-padding-error-result"></td>
+        </tr>
+        <tr>
+            <td>
+                <button id="api-401-missing-colon-btn">GET Missing colon button</button>
+            </td>
+            <td id="api-missing-colon-result"></td>
+        </tr>
+        <tr>
+            <td>
+                <button id="api-401-invalid-base64-btn">GET Invalid Base64 button</button>
+            </td>
+            <td id="api-invalid-base64-result"></td>
+        </tr>
         
     </tbody>
 </table>
@@ -62,3 +81,8 @@
 <p id="token"></p>
 <p id="token-payload"></p>
 <p id="token-header"></p>
+
+<h2>Підсумок тестів</h2>
+<div id="test-summary">
+    <p><b>Ще не було виконано жодного тесту.</b></p>
+</div>

@@ -4,6 +4,9 @@ import sys
 
 from models.request import CgiRequest 
 
+# ДЗ 5, 6, 7 — API /order, Custom-Header, REST-ответы.
+# В этом файле реализован REST-контроллер для заказов.
+
 class RestStatus:
     def __init__(self,is_ok:bool, code:int, message:str):
         self.is_ok = is_ok
@@ -83,11 +86,14 @@ class RestResponse:
 
 class OrderController:
     def __init__(self, request:CgiRequest):
+        # В контроллере храним объект запроса и объект ответа.
         self.request = request
         self.response = None
 
 
     def _check_custom_header(self):
+        # Проверяем обязательный заголовок.
+        # Если его нет, возвращаем 403 и выходим из обработки.
         header = self.request.headers.get("Custom-Header")
         
         if header is None or header.strip() == "":
@@ -99,6 +105,8 @@ class OrderController:
         return True
 
     def serve(self):
+        # Инициализируем базовую структуру REST-ответа.
+        # В ответе всегда есть meta + status + data.
         self.response = RestResponse(meta=RestMeta(
             service="Order API",
             request_method=self.request.request_method,
@@ -106,10 +114,19 @@ class OrderController:
                 "get": "GET /order/{id}",
                 "post": "POST /order",
                 "put": "PUT /order/{id}",
+                "patch": "PATCH /order/{id}",
                 "delete": "DELETE /order/{id}",
             }
         ))
 
+        # Сначала проверяем наличие Custom-Header.
+        # Для части кнопок он не отправляется специально, чтобы получить 403.
+        # Это нужно для демонстрации поведения API при отсутствии заголовка.
+        if not self._check_custom_header():
+            self._send_response()
+            return
+
+        # Дальше выбираем метод обработки по HTTP-методу запроса.
         action = "do_" + self.request.request_method.lower()
         controller_action = getattr(self, action, None)
         
@@ -117,19 +134,26 @@ class OrderController:
             controller_action()
         else:
             self.response.status = RestStatus.status405
-        
+        self._send_response()
+
+    def _send_response(self):
+        # Отдельная функция для вывода HTTP-ответа.
+        # Нужна, чтобы переиспользовать вывод в нескольких ветках.
         http_status_line = f"Status: {self.response.status.code} {self.response.status.message}\n"
         sys.stdout.buffer.write(http_status_line.encode('utf-8'))
-        
         sys.stdout.buffer.write(b"Content-Type: application/json; charset=utf-8\n\n")
 
-        json_output = json.dumps(self.response, ensure_ascii=False,
-                                 default=lambda x: x.to_json() if hasattr(x, 'to_json') else str)
+        json_output = json.dumps(
+            self.response,
+            ensure_ascii=False,
+            default=lambda x: x.to_json() if hasattr(x, 'to_json') else str,
+        )
 
         sys.stdout.buffer.write(json_output.encode('utf-8'))
 
 
     def do_get(self):
+        # Получение заказа (пример ответа).
         self.response.meta.data_type = "object"
         self.response.meta.cache = RestCache.hrs1 
         self.response.data = {
@@ -140,6 +164,7 @@ class OrderController:
         }
 
     def do_post(self):
+        # Создание заказа (пример ответа).
         self.response.meta.data_type = "object"
         self.response.status = RestStatus.status201 
         self.response.data = {
@@ -150,6 +175,7 @@ class OrderController:
         }
 
     def do_put(self):
+        # Полная замена заказа.
         self.response.meta.data_type = "object"
         self.response.data = {
             "order_id": 12345,
@@ -158,6 +184,7 @@ class OrderController:
         }
 
     def do_patch(self):
+        # Частичное изменение заказа.
         self.response.meta.data_type = "object"
         self.response.data = {
             "order_id": 12345,
@@ -166,6 +193,7 @@ class OrderController:
         }
 
     def do_delete(self):
+        # Удаление заказа.
         self.response.status = RestStatus.status204 
         self.response.data = None 
         self.response.meta.data_type = "null"
