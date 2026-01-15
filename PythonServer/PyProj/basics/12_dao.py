@@ -1,34 +1,48 @@
-from datetime import datetime
-import hmac
-import json
-from math import ceil
-import mysql.connector
-import sys
-import hashlib
-import helper
+# ДЗ 1: PBKDF2 (RFC2898) + ДЗ 2: Реєстрація з датою народження.
+# Этот файл — учебный конспект по работе с БД и хешированием паролей.
+# Ниже максимально подробно описаны все шаги: от подключения к БД до KDF и регистрации.
+from datetime import datetime          # работа с датами (дата рождения, проверка "не из будущего")
+import hmac                            # HMAC нужен для PBKDF2 (RFC2898)
+import json                            # читаем настройки БД из JSON
+from math import ceil                  # округление вверх для расчёта блоков PBKDF2
+import mysql.connector                 # драйвер MySQL
+import sys                             # системные данные, полезно для ошибок
+import hashlib                         # базовые хеш-функции
+import helper                          # вспомогательные функции (например, генерация соли)
 
 class DataAccessor:
     def __init__(self, ini_file: str = './db.json'):
+        # Читаем конфигурацию подключения к БД из JSON-файла.
+        # Это позволяет не хранить пароли прямо в коде.
         try:
             with open(ini_file, 'r', encoding='utf-8') as f:
-                self.ini = json.load(f)
+                self.ini = json.load(f)          # словарь с параметрами подключения
         except OSError as err:
+            # Если конфиг отсутствует — работа невозможна.
             raise RuntimeError("Неможливо продовжити без конфігурації бази даних.")
         try:
+            # Подключаемся к MySQL с параметрами из конфигурации.
             self.db_connection = mysql.connector.connect(**self.ini)
         except mysql.connector.Error as err:
+            # Если соединение не получилось — выводим понятную ошибку.
             raise RuntimeError("Неможливо продовжити без підключення до бази даних.")
     
     def install(self):
+        # Создание всех необходимых таблиц.
+        # В учебном проекте это позволяет "развернуть" БД в один вызов.
         try:
-            self._install_users()
-            self._install_roles()
-            self._install_accesses()
-            self._install_tokens()
+            self._install_users()       # таблица users
+            self._install_roles()       # таблица roles
+            self._install_accesses()    # таблица accesses
+            self._install_tokens()      # таблица tokens
         except Exception as err:
+            # Любая ошибка установки — выводим в консоль.
             print(err)
 
     def _install_users(self):
+        # Таблица users для хранения информации о пользователях.
+        # Поле user_datebirth допускает NULL (дата рождения необязательна).
+        # Это важно для ДЗ №2, где дата рождения может отсутствовать.
         sql = '''
         CREATE TABLE IF NOT EXISTS users (
             user_id            CHAR(36)     NOT NULL PRIMARY KEY DEFAULT (UUID()),
@@ -40,16 +54,19 @@ class DataAccessor:
         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
         '''
         if self.db_connection is None:
+            # Защита от ситуации, когда подключения нет.
             raise RuntimeError("Немає підключення до бази даних.(install_users)")
         with self.db_connection.cursor() as cursor:
             try:
-                cursor.execute(sql)
+                cursor.execute(sql)         # выполняем SQL
             except mysql.connector.Error as err:
-                print(f"Помилка виконання запиту: {err}")
+                print(f"Помилка виконання запиту: {err}")  # выводим ошибку
             else:
                 print("Таблиця users успішно створена або вже існує.")
     
     def _install_roles(self):
+        # Таблица ролей, которые определяют права доступа.
+        # Примеры ролей: admin, user.
         sql = '''
         CREATE TABLE IF NOT EXISTS roles (
             role_id          VARCHAR(16)  NOT NULL PRIMARY KEY,
@@ -71,6 +88,9 @@ class DataAccessor:
                 print("Таблиця user_roles успішно створена або вже існує.")
 
     def _install_accesses(self):
+        # Таблица доступов: логин, соль и derived key.
+        # user_access_dk — результат PBKDF2 (RFC2898) или KDF1 (учебная часть).
+        # Здесь хранится "производный ключ" (Derived Key), а не пароль в чистом виде.
         sql = '''
         CREATE TABLE IF NOT EXISTS accesses (
             access_id    CHAR(36)  NOT NULL PRIMARY KEY DEFAULT (UUID()),
@@ -93,6 +113,8 @@ class DataAccessor:
                 print("Таблиця user_accesses успішно створена або вже існує.")
 
     def _install_tokens(self):
+        # Таблица токенов (JWT/сессии).
+        # Нужна для хранения выданных токенов и сроков их действия.
         sql = '''
         CREATE TABLE IF NOT EXISTS tokens (
             token_id    CHAR(36)  NOT NULL PRIMARY KEY DEFAULT (UUID()),
@@ -113,50 +135,67 @@ class DataAccessor:
                 print("Таблиця tokens успішно створена або вже існує.")
     
     def _hash(self, input: str,) -> str:
-        hash = hashlib.sha3_256()
-        input = hash.update(input.encode('utf-8'))
-        return hash.hexdigest()
+        # SHA3-256 для KDF1 (простая демонстрация).
+        # KDF1 — упрощённый алгоритм "многоразового хеширования".
+        hash = hashlib.sha3_256()              # создаём объект SHA3-256
+        input = hash.update(input.encode('utf-8'))  # обновляем данные
+        return hash.hexdigest()                # возвращаем hex-строку
     
     def kdf1(self, password: str, salt: str) -> str:
-        iterations = 1000
-        dk_len = 20
-        t = self._hash(password + salt)
+        # KDF1: итеративное хеширование.
+        # Мы соединяем пароль и соль, затем многократно хешируем.
+        iterations = 1000               # количество повторов
+        dk_len = 20                     # длина производного ключа
+        t = self._hash(password + salt) # первичный хеш
         for _ in range(iterations):
-            t = self._hash(t)
-        return t[:dk_len]
+            t = self._hash(t)           # повторяем хеширование
+        return t[:dk_len]               # возвращаем укороченный DK
     
     def _int_to_4be(self, i: int) -> bytes:
+        # Преобразование int в 4-байтовый big-endian (для PBKDF2).
+        # Это нужно для индекса блока в PBKDF2.
         return i.to_bytes(4, byteorder='big')
     
     def pbkdf2_hmac_custom(self, password: str, salt: str,
                            hash_name: str = 'sha256') -> str:
-        iterations = 1000
-        dklen = 20
-        password_bytes = password.encode('utf-8')
-        salt_bytes = salt.encode('utf-8')
-        hlen = hashlib.new(hash_name).digest_size
+        # Реализация PBKDF2 (RFC2898) без встроенных функций.
+        # Используется HMAC и XOR всех блоков Ui.
+        # Это учебная реализация, которая повторяет формулу RFC.
+        iterations = 1000                      # число итераций
+        dklen = 20                             # длина результата
+        password_bytes = password.encode('utf-8')  # пароль в bytes
+        salt_bytes = salt.encode('utf-8')          # соль в bytes
+        hlen = hashlib.new(hash_name).digest_size  # длина хеша
 
         if dklen > (2 ** 32 - 1) * hlen:
+            # Ограничение из RFC: слишком длинный ключ нельзя получить.
             raise ValueError("Derived key too long")
 
-        l = ceil(dklen / hlen)
-        dk = b''
+        l = ceil(dklen / hlen)   # количество блоков
+        dk = b''                 # итоговый ключ (bytes)
 
         for block_index in range(1, l + 1):
-            u = hmac.new(password_bytes,
-                         salt_bytes + self._int_to_4be(block_index),
-                         getattr(hashlib, hash_name)).digest()
-            t = bytearray(u)
+            # U1 = HMAC(password, salt + INT(block_index))
+            u = hmac.new(
+                password_bytes,
+                salt_bytes + self._int_to_4be(block_index),
+                getattr(hashlib, hash_name)
+            ).digest()
+            t = bytearray(u)  # T = U1
             for _ in range(1, iterations):
-                u = hmac.new(password_bytes, u,
-                             getattr(hashlib, hash_name)).digest()
+                # U(i) = HMAC(password, U(i-1))
+                u = hmac.new(password_bytes, u, getattr(hashlib, hash_name)).digest()
+                # XOR накопление блока T
                 for i in range(len(u)):
                     t[i] ^= u[i]
-            dk += bytes(t)
+            dk += bytes(t)  # добавляем блок T к итоговому ключу
 
+        # Приводим результат к hex-строке.
         return dk[:dklen // 2].hex()
     
     def _seed_roles(self):
+        # Начальные роли системы.
+        # В проекте достаточно двух ролей: admin и user.
         sql = '''
         INSERT INTO roles (
             role_id,
@@ -174,33 +213,37 @@ class DataAccessor:
             role_can_delete = VALUES(role_can_delete)
         '''
         roles = [
-            ('admin', 'Root administrator', 1, 1, 1, 1),
-            ('user', 'Regular user', 0, 0, 0, 0)
+            ('admin', 'Root administrator', 1, 1, 1, 1),  # администратор
+            ('user', 'Regular user', 0, 0, 0, 0)          # обычный пользователь
         ]
 
         if self.db_connection is None:
             raise RuntimeError("Немає підключення до бази даних" + sys._getframe().f_code.co_name)
         with self.db_connection.cursor() as cursor:
             try:
-                cursor.executemany(sql, roles)
-                self.db_connection.commit()
+                cursor.executemany(sql, roles)    # множественная вставка
+                self.db_connection.commit()       # сохраняем изменения
             except mysql.connector.Error as err:
                 print(f"Помилка виконання запиту: {err}")
             else:
                 print("Таблиця tokens успішно створена або вже існує.")
 
     def get_id_identity(self) -> str:
+        # UUID из БД (удобно для консистентности).
+        # Это гарантирует одинаковый формат UUID везде.
         sql = "SELECT uuid()"
         if self.db_connection is None:
             raise RuntimeError("Немає підключення до бази даних" + sys._getframe().f_code.co_name)
         with self.db_connection.cursor() as cursor:
             try:
-                cursor.execute(sql)
-                return next(cursor)[0]
+                cursor.execute(sql)       # выполняем запрос
+                return next(cursor)[0]    # получаем UUID
             except mysql.connector.Error as err:
                 print(f"Помилка виконання запиту: {err}")
 
     def _seed_users(self):
+        # Начальный администратор.
+        # В учебных целях логин/пароль: admin/admin.
         id = "f7335c2f-bf51-11f0-95f7-0250f2882c00"
         sql = '''
         INSERT INTO users (
@@ -225,11 +268,11 @@ class DataAccessor:
                 print(f"Помилка виконання запиту: {err}")
             else:
                 print("Таблиця users успішно створена або вже існує.")
-        salt = helper.generate_salt()
+        salt = helper.generate_salt()            # генерируем соль
         access_id = "71240707-bf53-11f0-95f7-0250f2882c00"
         login = 'admin'
         password = 'admin'
-        dk = self.kdf1(password, salt)
+        dk = self.kdf1(password, salt)           # derived key от пароля и соли
         sql = '''
         INSERT INTO accesses (
             access_id,
@@ -257,13 +300,19 @@ class DataAccessor:
                 print("Таблиця accesses успішно створена або вже існує.")
     
     def seed(self):
+        # Заполнение таблиц начальными данными.
+        # Это "стартовые" данные, чтобы система была работоспособной.
         try:
-            self._seed_roles()
-            self._seed_users()
+            self._seed_roles()   # создаем роли
+            self._seed_users()   # создаем пользователя admin
         except Exception as err:
             print(err)
 
     def authenticate(self, login: str, password: str) -> dict | None:
+        # Проверяем пользователя по логину и derived key.
+        # 1) Берем пользователя из БД.
+        # 2) Считаем DK по паролю и соли.
+        # 3) Сравниваем DK.
         sql = '''SELECT *
                 FROM users u
                 JOIN accesses a ON a.user_id = u.user_id
@@ -273,11 +322,11 @@ class DataAccessor:
             raise RuntimeError("Немає підключення до бази даних" + sys._getframe().f_code.co_name)
         with self.db_connection.cursor(dictionary=True) as cursor:
             try:
-                cursor.execute(sql, (login,))
-                row = next(cursor, None)
+                cursor.execute(sql, (login,))           # поиск по логину
+                row = next(cursor, None)                # первая найденная запись
                 if row is None:
-                    return None
-                dk = self.kdf1(password, row['user_access_salt'])
+                    return None                         # пользователь не найден
+                dk = self.kdf1(password, row['user_access_salt'])  # DK из пароля
                 return row if dk == row['user_access_dk'] else None
             except mysql.connector.Error as err:
                 print(f"Помилка виконання запиту: {err}")
@@ -285,10 +334,13 @@ class DataAccessor:
     
     def register_user(self, name: str, email: str,
                       login: str, password: str, birthdate: str|None = None) -> bool:
+        # Регистрация с опциональной датой рождения (ДЗ №2).
+        # Сначала валидируем дату, потом проверяем логин, потом пишем в БД.
         birthdate_value = None
         if birthdate and birthdate.strip():
             try:
-                parsed = datetime.strptime(birthdate, "%Y-%m-%d")
+                parsed = datetime.strptime(birthdate, "%Y-%m-%d")  # формат YYYY-MM-DD
+                # Запрещаем будущие даты.
                 if parsed > datetime.now():
                     raise ValueError("Дата народження не може бути з майбутнього")
                 birthdate_value = parsed.strftime("%Y-%m-%d")
@@ -300,21 +352,25 @@ class DataAccessor:
             raise RuntimeError("Немає підключення до бази даних" + sys._getframe().f_code.co_name)
         with self.db_connection.cursor() as cursor:
             try:
-                cursor.execute(sql, (login,))
+                cursor.execute(sql, (login,))          # проверяем логин
                 count = next(cursor)[0]
                 if count > 0:
                     raise ValueError("Користувач з таким логіном вже існує.")
-                user_id = self.get_id_identity()
-                salt = helper.generate_salt()
-                dk = self.kdf1(password, salt)
+                user_id = self.get_id_identity()       # генерируем UUID
+                salt = helper.generate_salt()          # генерируем соль
+                dk = self.kdf1(password, salt)         # производный ключ
                 with self.db_connection.cursor() as cursor2:
-                    cursor.execute("INSERT INTO users (user_id, user_name, user_email, user_datebirth) VALUES (%s, %s, %s, %s)",
-                                   (user_id, name,  email, birthdate_value,))
-                    cursor2.execute('''INSERT INTO accesses 
+                    cursor.execute(
+                        "INSERT INTO users (user_id, user_name, user_email, user_datebirth) VALUES (%s, %s, %s, %s)",
+                        (user_id, name,  email, birthdate_value,)
+                    )
+                    cursor2.execute(
+                        '''INSERT INTO accesses 
                                     (access_id, user_id, role_id, user_access_login, user_access_salt, user_access_dk)
                                     VALUES (UUID(), %s, 'user', %s, %s, %s)''',
-                                    (user_id, login, salt, dk,))
-                self.db_connection.commit()
+                        (user_id, login, salt, dk,)
+                    )
+                self.db_connection.commit()            # сохраняем изменения
             except mysql.connector.Error as err:
                 print(f"Помилка виконання запиту: {err}")
                 self.db_connection.rollback()
@@ -325,11 +381,13 @@ class DataAccessor:
 
 
 def main():
+    # Небольшой CLI-скрипт для ручного тестирования.
+    # Он создает таблицы, затем позволяет создать пользователя.
     try:
-        dataAccessor = DataAccessor()
-        dataAccessor.install()
+        dataAccessor = DataAccessor()     # создаем объект доступа к БД
+        dataAccessor.install()            # создаем таблицы
         print(dataAccessor.get_id_identity())
-        dataAccessor.seed()
+        dataAccessor.seed()               # заполняем стартовыми данными
     except RuntimeError:
         print("Error")
     else:
@@ -337,11 +395,11 @@ def main():
         # print("pbkdf2", dataAccessor.pbkdf2_hmac_custom("123", "456")) #a51a8bc1342be8360015
         print("Підключення до бази даних успішне.")
 
-    name = input("Name: ")
-    email = input("Email: ")
-    login = input("Login: ")
-    password = input("Password: ")
-    birthdate = input("Birthdate (YYYY-MM-DD) or empty: ")
+    name = input("Name: ")                     # имя
+    email = input("Email: ")                   # email
+    login = input("Login: ")                   # логин
+    password = input("Password: ")             # пароль
+    birthdate = input("Birthdate (YYYY-MM-DD) or empty: ")  # дата рождения
     try:
         print(dataAccessor.register_user(name, email, login, password, birthdate))
     except Exception as err:

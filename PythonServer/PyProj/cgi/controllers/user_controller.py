@@ -4,9 +4,14 @@ from dao import helper
 from controllers.controller_rest import RestController, RestMeta, RestStatus, RestCache
 from dao.data_accessor import DataAccessor
 
+# ДЗ 8, 9 — Тесты ошибок аутентификации + вывод заголовка JWT.
+# Здесь реализован контроллер /user (Basic Auth -> JWT).
+
 class UserController(RestController):
 
     def serve(self):
+        # Базовая настройка метаданных REST-ответа.
+        # Здесь указываем ссылки на методы API.
         self.response.meta = RestMeta(
            service="User API",
            links={
@@ -17,6 +22,8 @@ class UserController(RestController):
         super().serve()
 
     def do_get(self):
+        # Аутентификация пользователя по Basic-схеме.
+        # Ниже — подробные проверки входных данных, чтобы явно показывать тип ошибок.
         self.response.meta.service += ": authentication"
 
         auth_header = self.request.headers.get("Authorization", None)
@@ -24,6 +31,8 @@ class UserController(RestController):
             self.send_error("Unauthorized: Missing 'Authorization' header", 401)
             return
         
+        # Ожидаем именно "Basic " в начале заголовка.
+        # Иначе это считается неправильной схемой.
         auth_scheme = 'Basic '
         if not auth_header.startswith(auth_scheme):
             self.send_error(f"Unauthorized: Invalid 'Authorization' header format: {auth_scheme} only", 401)
@@ -34,11 +43,14 @@ class UserController(RestController):
             self.send_error("Unauthorized: Short 'Authorization' credentials value", 401)
             return
         
+        # Валидация символов Base64 (разрешены только стандартные символы + '=' в конце).
         match = re.search(r"[^a-zA-Z0-9+/=]", credentials)
         if match:
             self.send_error(f"Unauthorized: Format error (invalid symbol) for credentials {credentials}", 401)
             return
         
+        # Декодируем Base64 в строку "login:password".
+        # Это стандартная форма для Basic Auth.
         user_pass = None
         try:
             user_pass = base64.b64decode(credentials).decode('utf-8')
@@ -53,19 +65,24 @@ class UserController(RestController):
             self.send_error(f"Unauthorized: Decode error for credentials {credentials}", 401)
             return
 
+        # Проверка формата "login:password".
         if not ':' in user_pass:
             self.send_error("Unauthorized: Credential format error", 401)
             return
         
         login, password = user_pass.split(':', 1)
+        # Берем пользователя из БД.
         data_accessor = DataAccessor()
         user = data_accessor.authenticate(login, password)
         if not user:
             self.send_error("Unauthorized: Credentials rejected", 401)
             return
+
+        # Формируем JWT payload.
+        # iss должен соответствовать требованию ДЗ: "Server-KN-P-221".
         payload = {
             "sub": str(user['user_id']),
-            "iss": "KNP_221_CGI",
+            "iss": "Server-KN-P-221",
             "aud": user['role_id'],
             "iat": datetime.datetime.now().timestamp(),
             "name": user['user_name'],
