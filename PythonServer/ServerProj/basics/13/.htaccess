@@ -1,4 +1,0 @@
-CGIPassAuth on  # Pass 'Authorization' header to CGI scripts
-
-RewriteEngine on
-RewriteRule .* access_manager.py?htctrl=1 [END,QSA]
