@@ -1,0 +1,15 @@
+<VirtualHost *:80>
+    ServerAdmin webmaster@dummy-host.example.com
+    DocumentRoot "C:/Users/morri/OneDrive/Рабочий стол/Программирование/python/cgi"
+    ServerName cgi221.loc
+    ServerAlias www.cgi221.loc
+    ErrorLog "C:/Users/morri/OneDrive/Рабочий стол/Программирование/python/cgi/logs/error.log"
+    CustomLog "C:/Users/morri/OneDrive/Рабочий стол/Программирование/python/cgi/logs/access.log" common
+    <Directory "C:/Users/morri/OneDrive/Рабочий стол/Программирование/python/cgi">
+	    AllowOverride All
+	    Options -Indexes +ExecCGI
+	    AddHandler cgi-script .py
+	    Require all granted
+        DirectoryIndex index.py index.html
+    </Directory>
+</VirtualHost>
