@@ -1,43 +1,47 @@
+# requests використовується для HTTP-запиту (отримання JSON).
 import requests
 
 
+# Клас-модель, що відображає JSON-дані у поля Python-об'єкта (ORM-підхід).
 class NbuRate:
     def __init__(self, j:dict):
-        self.r030 = j["r030"]
-        self.name = j["txt"]
-        self.rate = j["rate"]
-        self.abbr = j["cc"]
+        self.r030 = j["r030"]  # Код валюти НБУ.
+        self.name = j["txt"]   # Назва валюти.
+        self.rate = j["rate"]  # Курс.
+        self.abbr = j["cc"]    # Скорочення.
     
     def __str__(self) -> str:
         return f"{self.name} ({self.abbr}): {self.rate}"
     
 
+# Базовий клас для зберігання даних про курси.
 class RatesData:
     def __init__(self):
-        self.exchange_date = None
-        self.rates = []
+        self.exchange_date = None  # Дата курсу.
+        self.rates = []            # Список об'єктів NbuRate.
 
     
 
 
+# Похідний клас, який заповнює дані з API.
 class NbuRatesData(RatesData):
     url = 'https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json'
 
     def __init__(self):
-        request = requests.get(NbuRatesData.url)
-        response = request.json()
+        request = requests.get(NbuRatesData.url)  # HTTP-запит.
+        response = request.json()                 # JSON -> Python.
         '''Курси валют за даними НБУ'''
-        self.exchange_date = response[0]["exchangedate"]
-        self.rates = [NbuRate(r) for r in response]
+        self.exchange_date = response[0]["exchangedate"]  # Поле з JSON.
+        self.rates = [NbuRate(r) for r in response]        # Масив JSON -> масив об'єктів.
 
 
 
 def main():
-    rates_data:RatesData = NbuRatesData()
+    rates_data:RatesData = NbuRatesData()  # Поліморфізм: змінна базового типу.
 
     name = input("Введіть назву валюти або її частину (наприклад, долар, євро): ")
     results = [rate for rate in rates_data.rates
-               if name in rate.name]
+               if name in rate.name]  # Фільтрація списку.
     
     if results:
         print(f"Знайдено {len(results)} валют(у):")
