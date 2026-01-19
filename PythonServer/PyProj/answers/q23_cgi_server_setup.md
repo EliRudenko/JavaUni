@@ -17,6 +17,10 @@
 - **Apache VirtualHost (конфіг):** `cgi/notes.txt` — приклад налаштування локального хостингу з ExecCGI та handler.【F:PythonServer/PyProj/cgi/notes.txt†L1-L22】
 - **Shebang у CGI-скриптах:** `cgi/index.py`, `cgi/access_manager.py`.【F:PythonServer/PyProj/cgi/index.py†L1-L2】【F:PythonServer/PyProj/cgi/access_manager.py†L1-L2】
 
+## Ключевые моменты в коде
+- `cgi/notes.txt` — параметры Apache для CGI (AddHandler, DirectoryIndex).
+- `cgi/index.py` — пример скрипта, соответствующего требованиям CGI.
+
 ## Куди перейти в коді
 - **`cgi/notes.txt`** — приклад конфігурації Apache.
 - **`cgi/index.py`** — мінімальний CGI-скрипт.

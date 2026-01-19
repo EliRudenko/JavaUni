@@ -11,6 +11,9 @@
 - **Rewrite у .htaccess:** `cgi/.htaccess` перенаправляє все на `access_manager.py`.【F:PythonServer/PyProj/cgi/.htaccess†L1-L7】
 - **Диспетчер:** `cgi/access_manager.py` — аналіз URI, маршрутизація, імпорт контролера.【F:PythonServer/PyProj/cgi/access_manager.py†L1-L181】
 
+## Ключевые моменты в коде
+- `cgi/access_manager.py` — front controller: все запросы идут через один вход.
+
 ## Куди перейти в коді
 - **`cgi/.htaccess`** — правило, що створює єдину точку входу.
 - **`cgi/access_manager.py`** — основна логіка диспетчера.

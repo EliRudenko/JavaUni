@@ -12,6 +12,10 @@ CGI читає тіло запиту зі **stdin**, а відповідь фо�
 - **Налаштування stdout:** `cgi/index.py` і `cgi/access_manager.py` задають UTF-8 для stdout.【F:PythonServer/PyProj/cgi/index.py†L12-L14】【F:PythonServer/PyProj/cgi/access_manager.py†L18-L19】
 - **Вивід відповіді у stdout:** `cgi/index.py`, `cgi/controllers/controller_rest.py`, `cgi/controllers/order_controller.py`.【F:PythonServer/PyProj/cgi/index.py†L47-L60】【F:PythonServer/PyProj/cgi/controllers/controller_rest.py†L90-L112】【F:PythonServer/PyProj/cgi/controllers/order_controller.py†L100-L121】
 
+## Ключевые моменты в коде
+- `cgi/index.py` — настройка stdout на UTF-8 и вывод заголовков.
+- `cgi/controllers/controller_rest.py`/`order_controller.py` — формирование тела ответа в stdout.
+
 ## Куди перейти в коді
 - **`cgi/index.py`** — мінімальний приклад запису заголовків/HTML.
 - **`cgi/controllers/order_controller.py`** — приклад JSON-відповіді через stdout.

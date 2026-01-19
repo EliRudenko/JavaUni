@@ -13,6 +13,10 @@
 - **Basic Auth:** `cgi/controllers/user_controller.py` читає Authorization і декодує Base64. 【F:PythonServer/PyProj/cgi/controllers/user_controller.py†L33-L83】
 - **Bearer JWT:** `cgi/dao/helper.py` витягує Bearer токен. 【F:PythonServer/PyProj/cgi/dao/helper.py†L63-L74】
 
+## Ключевые моменты в коде
+- `cgi/controllers/user_controller.py` — проверка заголовка Authorization.
+- `cgi/dao/helper.py` — вспомогательные проверки токена/ролей.
+
 ## Куди перейти в коді
 - **`cgi/.htaccess`** — важлива директива для Authorization.
 - **`cgi/controllers/user_controller.py`** — приклад Basic Auth.

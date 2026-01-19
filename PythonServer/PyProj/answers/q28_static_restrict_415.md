@@ -11,5 +11,8 @@
 ## Де в коді
 - **Список дозволених типів:** `cgi/access_manager.py` містить `allowed_media_types` і повертає 415 для інших типів.【F:PythonServer/PyProj/cgi/access_manager.py†L65-L101】
 
+## Ключевые моменты в коде
+- `cgi/access_manager.py` — проверка Content-Type и возврат 415 для запрета неподходящих типов.
+
 ## Куди перейти в коді
 - **`cgi/access_manager.py`** — блок перевірки типів і віддачі статики.
