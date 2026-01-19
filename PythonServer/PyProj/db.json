@@ -1,0 +1,7 @@
+{
+  "dbName": "pyproj_db",
+  "host": "localhost",
+  "port": 5432,
+  "user": "pyproj_user",
+  "password": "secret_password"
+}
