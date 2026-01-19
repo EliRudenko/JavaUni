@@ -1,0 +1,10 @@
+{
+    "host": "localhost",
+    "port": 3307,
+    "user": "root",
+    "password": "",
+    "database": "pyservertest",
+    "charset": "utf8mb4",
+    "collation": "utf8mb4_unicode_ci",
+    "use_unicode": true
+}

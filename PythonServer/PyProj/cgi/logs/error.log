@@ -1,0 +1,4 @@
+[Mon Jan 19 23:34:44.652336 2026] [win32:error] [pid 25844:tid 2004] [client ::1:49267] AH02102: D:/JavaUni/PythonServer/PyProj/cgi/access_manager.py is not executable; ensure interpreted scripts have "#!" or "'!" first line
+[Mon Jan 19 23:34:44.652336 2026] [cgi:error] [pid 25844:tid 2004] (9)Bad file descriptor: [client ::1:49267] AH01222: don't know how to spawn child process: D:/JavaUni/PythonServer/PyProj/cgi/access_manager.py
+[Mon Jan 19 23:47:38.621678 2026] [win32:error] [pid 29124:tid 1992] [client ::1:65032] AH02102: D:/JavaUni/PythonServer/PyProj/cgi/access_manager.py is not executable; ensure interpreted scripts have "#!" or "'!" first line
+[Mon Jan 19 23:47:38.621678 2026] [cgi:error] [pid 29124:tid 1992] (9)Bad file descriptor: [client ::1:65032] AH01222: don't know how to spawn child process: D:/JavaUni/PythonServer/PyProj/cgi/access_manager.py

@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="4984a6ee-9554-42e7-92e6-ec707876b415" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/PyProj.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/HW/01_pbkdf2/info.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/HW/02_birthdate_registration/info.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/HW/03_route_analysis/info.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/HW/04_home_params/info.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/HW/05_order_api/info.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/HW/06_order_custom_header/info.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/HW/07_order_rest/info.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/HW/08_usertest_errors/info.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/HW/09_token_header_view/info.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/HW/10_jwt_cty_nested/info.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/HW/11_jwt_claims_validation/info.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/HW/12_usertest_summary/info.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/answers/q01_python_overview.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/answers/q02_data_types.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/answers/q03_data_structures.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/answers/q04_branching_loops.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/answers/q05_generators.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/answers/q06_functions.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/answers/q07_scope.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/answers/q08_lambda.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/answers/q09_exceptions.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/answers/q10_file_ops.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/answers/q11_file_save_load.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/answers/q12_json_format.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/answers/q13_json_files.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/answers/q14_oop_overview.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/answers/q15_oop_construction_methods.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/answers/q16_special_methods.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/answers/q17_operator_overload.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/answers/q18_orm.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/answers/q19_db_connect.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/answers/q20_db_queries.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/answers/q21_cgi.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/answers/q22_cgi_overview.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/answers/q23_cgi_server_setup.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/answers/q24_cgi_environment.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/answers/q25_cgi_stdio_encoding.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/answers/q26_cgi_front_controller.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/answers/q27_static_access.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/answers/q28_static_restrict_415.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/answers/q29_local_hosting.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/answers/q30_cgi_errors.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/answers/q31_routing_overview.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/answers/q32_dynamic_import_controllers.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/answers/q33_json_serialization.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/answers/q34_dal_concept.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/answers/q35_db_install_seed.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/answers/q36_auth_authz.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/answers/q37_http_methods_405.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/answers/q38_status_401_403.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/answers/q39_rest_architecture.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/answers/q40_idempotency_caching.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/answers/q41_api_testing.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bash.exe.stackdump" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/basics/10_orm.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/basics/11_db.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/basics/12_generators.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/basics/1_2_dao.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/basics/2_types.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/basics/3_funcs.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/basics/4_lambda.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/basics/5_except.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/basics/6_files.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/basics/7_json.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/basics/8_oop1.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/basics/9_oop2.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/basics/lesson1-2/HW1.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/basics/lesson1-2/main.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/basics/lesson11-12/HW6.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/basics/lesson11-12/db_start.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/basics/lesson13-14/dao.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/basics/lesson13-14/db.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/basics/lesson3-4/HW2.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/basics/lesson3-4/funk.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/basics/lesson5-6/HW3.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/basics/lesson5-6/db.ini" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/basics/lesson5-6/except.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/basics/lesson5-6/files.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/basics/lesson7-8/HW4.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/basics/lesson7-8/j.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/basics/lesson7-8/start_json.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/basics/lesson7-8/start_oop.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/basics/lesson9-10/HW5.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/basics/lesson9-10/nbu_rates.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/basics/lesson9-10/start_orm.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cgi/.htaccess" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cgi/access_manager.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cgi/controllers/controller_rest.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cgi/controllers/discount_controller.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cgi/controllers/home_controller.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cgi/controllers/order_controller.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cgi/controllers/ordertest_controller.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cgi/controllers/user_controller.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cgi/controllers/usertest_controller.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cgi/dao/data_accessor.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cgi/dao/helper.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cgi/db.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cgi/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cgi/index.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cgi/logs/access.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cgi/logs/error.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cgi/models/request.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cgi/notes.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cgi/static/css/site.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cgi/static/img/Python.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cgi/static/img/m13.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cgi/static/js/site.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cgi/views/_layout.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cgi/views/home_index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cgi/views/home_params.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cgi/views/home_privacy.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cgi/views/ordertest_index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cgi/views/usertest_index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db.ini" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/helper.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/j.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/practice_tasks/task01_db_json.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/practice_tasks/task02_hash_digest.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/practice_tasks/task03_salt.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/practice_tasks/task04_random_filename.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/practice_tasks/task05_otp.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/practice_tasks/task06_parse_url.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/practice_tasks/task07_parse_path.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/practice_tasks/task08_parse_query.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/practice_tasks/task09_jwt_body.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/practice_tasks/task10_jwt_signature.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/practice_tasks/task11_jwt_decompose.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/practice_tasks/task12_jwt_verify_signature.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/practice_tasks/task13_basic_auth_header.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/practice_tasks/task14_jwt_time_valid_bool.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/practice_tasks/task15_jwt_time_valid_seconds.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/practice_tasks/task16_rest_meta.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/practice_tasks/task17_rest_status.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/practice_tasks/task18_jwt_compose_payload.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/practice_tasks/task19_jwt_compose_user.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/practice_tasks/task20_bearer_auth_header.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CW/hibernate" beforeDir="false" afterPath="$PROJECT_DIR$/../../CW/hibernate" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
+  <component name="ProjectId" id="38J4g20KnciGICdfxk4PtR070P7" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Python.access_manager.executor&quot;: &quot;Run&quot;,
+    &quot;Python.data_accessor.executor&quot;: &quot;Run&quot;,
+    &quot;Python.task01_db_json.executor&quot;: &quot;Run&quot;,
+    &quot;Python.task02_hash_digest.executor&quot;: &quot;Run&quot;,
+    &quot;Python.task03_salt.executor&quot;: &quot;Run&quot;,
+    &quot;Python.task04_random_filename.executor&quot;: &quot;Run&quot;,
+    &quot;Python.task05_otp.executor&quot;: &quot;Run&quot;,
+    &quot;Python.task06_parse_url.executor&quot;: &quot;Run&quot;,
+    &quot;Python.task07_parse_path.executor&quot;: &quot;Run&quot;,
+    &quot;Python.task20_bearer_auth_header.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/JavaUni/PythonServer/PyProj/basics&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\JavaUni\PythonServer\PyProj\basics" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python.data_accessor">
+    <configuration name="access_manager" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="PyProj" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/cgi" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/cgi/access_manager.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="data_accessor" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="PyProj" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/cgi/dao" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/cgi/dao/data_accessor.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="task06_parse_url" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="PyProj" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/practice_tasks" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/practice_tasks/task06_parse_url.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="task07_parse_path" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="PyProj" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/practice_tasks" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/practice_tasks/task07_parse_path.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="task20_bearer_auth_header" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="PyProj" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/practice_tasks" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/practice_tasks/task20_bearer_auth_header.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.data_accessor" />
+        <item itemvalue="Python.access_manager" />
+        <item itemvalue="Python.task20_bearer_auth_header" />
+        <item itemvalue="Python.task07_parse_path" />
+        <item itemvalue="Python.task06_parse_url" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-b598e85cdad2-JavaScript-PY-252.25557.130" />
+        <option value="bundled-python-sdk-1bde30d8e611-7b97d883f26b-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-252.25557.130" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4984a6ee-9554-42e7-92e6-ec707876b415" name="Changes" comment="" />
+      <created>1768504450777</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1768504450777</updated>
+      <workItem from="1768504452560" duration="300000" />
+      <workItem from="1768505333172" duration="21000" />
+      <workItem from="1768505355862" duration="19000" />
+      <workItem from="1768505431943" duration="10963000" />
+      <workItem from="1768836049506" duration="11517000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/cgi/access_manager.py</url>
+          <line>10</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/PyProj$task03_salt.coverage" NAME="task03_salt Coverage Results" MODIFIED="1768854337983" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/practice_tasks" />
+    <SUITE FILE_PATH="coverage/PyProj$task06_parse_url.coverage" NAME="task06_parse_url Coverage Results" MODIFIED="1768854347339" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/practice_tasks" />
+    <SUITE FILE_PATH="coverage/PyProj$task07_parse_path.coverage" NAME="task07_parse_path Coverage Results" MODIFIED="1768854350628" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/practice_tasks" />
+    <SUITE FILE_PATH="coverage/PyProj$data_accessor.coverage" NAME="data_accessor Coverage Results" MODIFIED="1768860340229" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/cgi/dao" />
+    <SUITE FILE_PATH="coverage/PyProj$task05_otp.coverage" NAME="task05_otp Coverage Results" MODIFIED="1768854344664" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/practice_tasks" />
+    <SUITE FILE_PATH="coverage/PyProj$task04_random_filename.coverage" NAME="task04_random_filename Coverage Results" MODIFIED="1768854341383" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/practice_tasks" />
+    <SUITE FILE_PATH="coverage/PyProj$task20_bearer_auth_header.coverage" NAME="task20_bearer_auth_header Coverage Results" MODIFIED="1768854354489" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/practice_tasks" />
+    <SUITE FILE_PATH="coverage/PyProj$task02_hash_digest.coverage" NAME="task02_hash_digest Coverage Results" MODIFIED="1768854334026" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/practice_tasks" />
+    <SUITE FILE_PATH="coverage/PyProj$task01_db_json.coverage" NAME="task01_db_json Coverage Results" MODIFIED="1768854328093" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/practice_tasks" />
+    <SUITE FILE_PATH="coverage/PyProj$access_manager.coverage" NAME="access_manager Coverage Results" MODIFIED="1768859876922" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/cgi" />
+  </component>
+</project>

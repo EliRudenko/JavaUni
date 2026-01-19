@@ -1,0 +1,238 @@
+hw
+
+# Conflicts:
+#	PythonServer/PyProj/answers/q01_python_overview.md
+#	PythonServer/PyProj/answers/q02_data_types.md
+#	PythonServer/PyProj/answers/q03_data_structures.md
+#	PythonServer/PyProj/answers/q04_branching_loops.md
+#	PythonServer/PyProj/answers/q05_generators.md
+#	PythonServer/PyProj/answers/q06_functions.md
+#	PythonServer/PyProj/answers/q07_scope.md
+#	PythonServer/PyProj/answers/q08_lambda.md
+#	PythonServer/PyProj/answers/q09_exceptions.md
+#	PythonServer/PyProj/answers/q10_file_ops.md
+#	PythonServer/PyProj/answers/q11_file_save_load.md
+#	PythonServer/PyProj/answers/q12_json_format.md
+#	PythonServer/PyProj/answers/q13_json_files.md
+#	PythonServer/PyProj/answers/q14_oop_overview.md
+#	PythonServer/PyProj/answers/q15_oop_construction_methods.md
+#	PythonServer/PyProj/answers/q16_special_methods.md
+#	PythonServer/PyProj/answers/q17_operator_overload.md
+#	PythonServer/PyProj/answers/q18_orm.md
+#	PythonServer/PyProj/answers/q19_db_connect.md
+#	PythonServer/PyProj/answers/q20_db_queries.md
+#	PythonServer/PyProj/answers/q21_cgi.md
+#	PythonServer/PyProj/answers/q22_cgi_overview.md
+#	PythonServer/PyProj/answers/q23_cgi_server_setup.md
+#	PythonServer/PyProj/answers/q24_cgi_environment.md
+#	PythonServer/PyProj/answers/q25_cgi_stdio_encoding.md
+#	PythonServer/PyProj/answers/q26_cgi_front_controller.md
+#	PythonServer/PyProj/answers/q27_static_access.md
+#	PythonServer/PyProj/answers/q28_static_restrict_415.md
+#	PythonServer/PyProj/answers/q29_local_hosting.md
+#	PythonServer/PyProj/answers/q30_cgi_errors.md
+#	PythonServer/PyProj/answers/q31_routing_overview.md
+#	PythonServer/PyProj/answers/q32_dynamic_import_controllers.md
+#	PythonServer/PyProj/answers/q33_json_serialization.md
+#	PythonServer/PyProj/answers/q34_dal_concept.md
+#	PythonServer/PyProj/answers/q35_db_install_seed.md
+#	PythonServer/PyProj/answers/q36_auth_authz.md
+#	PythonServer/PyProj/answers/q37_http_methods_405.md
+#	PythonServer/PyProj/answers/q38_status_401_403.md
+#	PythonServer/PyProj/answers/q39_rest_architecture.md
+#	PythonServer/PyProj/answers/q40_idempotency_caching.md
+#	PythonServer/PyProj/answers/q41_api_testing.md
+#	PythonServer/PyProj/basics/10_orm.py
+#	PythonServer/PyProj/basics/11_db.py
+#	PythonServer/PyProj/basics/12_generators.py
+#	PythonServer/PyProj/basics/1_2_dao.py
+#	PythonServer/PyProj/basics/2_types.py
+#	PythonServer/PyProj/basics/3_funcs.py
+#	PythonServer/PyProj/basics/4_lambda.py
+#	PythonServer/PyProj/basics/5_except.py
+#	PythonServer/PyProj/basics/6_files.py
+#	PythonServer/PyProj/basics/7_json.py
+#	PythonServer/PyProj/basics/8_oop1.py
+#	PythonServer/PyProj/basics/9_oop2.py
+#	PythonServer/PyProj/cgi/access_manager.py
+#	PythonServer/PyProj/cgi/controllers/controller_rest.py
+#	PythonServer/PyProj/cgi/controllers/home_controller.py
+#	PythonServer/PyProj/cgi/controllers/order_controller.py
+#	PythonServer/PyProj/cgi/controllers/user_controller.py
+#	PythonServer/PyProj/cgi/dao/data_accessor.py
+#	PythonServer/PyProj/cgi/dao/helper.py
+#	PythonServer/PyProj/cgi/index.py
+#	PythonServer/PyProj/cgi/models/request.py
+#	PythonServer/PyProj/cgi/notes.txt
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# interactive rebase in progress; onto 5ac9603
+# Last command done (1 command done):
+#    pick 1ac94f0 hw
+# No commands remaining.
+# You are currently rebasing branch 'main' on '5ac9603'.
+#
+# Changes to be committed:
+#	deleted:    PythonServer/PyProj/.idea/PyProj.iml
+#	deleted:    PythonServer/PyProj/.idea/encodings.xml
+#	deleted:    PythonServer/PyProj/.idea/inspectionProfiles/profiles_settings.xml
+#	deleted:    PythonServer/PyProj/.idea/misc.xml
+#	deleted:    PythonServer/PyProj/.idea/modules.xml
+#	deleted:    PythonServer/PyProj/.idea/vcs.xml
+#	deleted:    PythonServer/PyProj/.idea/workspace.xml
+#	deleted:    PythonServer/PyProj/HW/01_pbkdf2/info.md
+#	deleted:    PythonServer/PyProj/HW/02_birthdate_registration/info.md
+#	deleted:    PythonServer/PyProj/HW/03_route_analysis/info.md
+#	deleted:    PythonServer/PyProj/HW/04_home_params/info.md
+#	deleted:    PythonServer/PyProj/HW/05_order_api/info.md
+#	deleted:    PythonServer/PyProj/HW/06_order_custom_header/info.md
+#	deleted:    PythonServer/PyProj/HW/07_order_rest/info.md
+#	deleted:    PythonServer/PyProj/HW/08_usertest_errors/info.md
+#	deleted:    PythonServer/PyProj/HW/09_token_header_view/info.md
+#	deleted:    PythonServer/PyProj/HW/10_jwt_cty_nested/info.md
+#	deleted:    PythonServer/PyProj/HW/11_jwt_claims_validation/info.md
+#	deleted:    PythonServer/PyProj/HW/12_usertest_summary/info.md
+#	deleted:    PythonServer/PyProj/README.md
+#	deleted:    PythonServer/PyProj/__pycache__/helper.cpython-313.pyc
+#	deleted:    PythonServer/PyProj/answers/q01_python_overview.md
+#	deleted:    PythonServer/PyProj/answers/q02_data_types.md
+#	deleted:    PythonServer/PyProj/answers/q03_data_structures.md
+#	deleted:    PythonServer/PyProj/answers/q04_branching_loops.md
+#	deleted:    PythonServer/PyProj/answers/q05_generators.md
+#	deleted:    PythonServer/PyProj/answers/q06_functions.md
+#	deleted:    PythonServer/PyProj/answers/q07_scope.md
+#	deleted:    PythonServer/PyProj/answers/q08_lambda.md
+#	deleted:    PythonServer/PyProj/answers/q09_exceptions.md
+#	deleted:    PythonServer/PyProj/answers/q10_file_ops.md
+#	deleted:    PythonServer/PyProj/answers/q11_file_save_load.md
+#	deleted:    PythonServer/PyProj/answers/q12_json_format.md
+#	deleted:    PythonServer/PyProj/answers/q13_json_files.md
+#	deleted:    PythonServer/PyProj/answers/q14_oop_overview.md
+#	deleted:    PythonServer/PyProj/answers/q15_oop_construction_methods.md
+#	deleted:    PythonServer/PyProj/answers/q16_special_methods.md
+#	deleted:    PythonServer/PyProj/answers/q17_operator_overload.md
+#	deleted:    PythonServer/PyProj/answers/q18_orm.md
+#	deleted:    PythonServer/PyProj/answers/q19_db_connect.md
+#	deleted:    PythonServer/PyProj/answers/q20_db_queries.md
+#	deleted:    PythonServer/PyProj/answers/q21_cgi.md
+#	deleted:    PythonServer/PyProj/answers/q22_cgi_overview.md
+#	deleted:    PythonServer/PyProj/answers/q23_cgi_server_setup.md
+#	deleted:    PythonServer/PyProj/answers/q24_cgi_environment.md
+#	deleted:    PythonServer/PyProj/answers/q25_cgi_stdio_encoding.md
+#	deleted:    PythonServer/PyProj/answers/q26_cgi_front_controller.md
+#	deleted:    PythonServer/PyProj/answers/q27_static_access.md
+#	deleted:    PythonServer/PyProj/answers/q28_static_restrict_415.md
+#	deleted:    PythonServer/PyProj/answers/q29_local_hosting.md
+#	deleted:    PythonServer/PyProj/answers/q30_cgi_errors.md
+#	deleted:    PythonServer/PyProj/answers/q31_routing_overview.md
+#	deleted:    PythonServer/PyProj/answers/q32_dynamic_import_controllers.md
+#	deleted:    PythonServer/PyProj/answers/q33_json_serialization.md
+#	deleted:    PythonServer/PyProj/answers/q34_dal_concept.md
+#	deleted:    PythonServer/PyProj/answers/q35_db_install_seed.md
+#	deleted:    PythonServer/PyProj/answers/q36_auth_authz.md
+#	deleted:    PythonServer/PyProj/answers/q37_http_methods_405.md
+#	deleted:    PythonServer/PyProj/answers/q38_status_401_403.md
+#	deleted:    PythonServer/PyProj/answers/q39_rest_architecture.md
+#	deleted:    PythonServer/PyProj/answers/q40_idempotency_caching.md
+#	deleted:    PythonServer/PyProj/answers/q41_api_testing.md
+#	deleted:    PythonServer/PyProj/bash.exe.stackdump
+#	deleted:    PythonServer/PyProj/basics/10_orm.py
+#	deleted:    PythonServer/PyProj/basics/11_db.py
+#	deleted:    PythonServer/PyProj/basics/12_generators.py
+#	deleted:    PythonServer/PyProj/basics/1_2_dao.py
+#	deleted:    PythonServer/PyProj/basics/2_types.py
+#	deleted:    PythonServer/PyProj/basics/3_funcs.py
+#	deleted:    PythonServer/PyProj/basics/4_lambda.py
+#	deleted:    PythonServer/PyProj/basics/5_except.py
+#	deleted:    PythonServer/PyProj/basics/6_files.py
+#	deleted:    PythonServer/PyProj/basics/7_json.py
+#	deleted:    PythonServer/PyProj/basics/8_oop1.py
+#	deleted:    PythonServer/PyProj/basics/9_oop2.py
+#	deleted:    PythonServer/PyProj/basics/lesson1-2/HW1.py
+#	deleted:    PythonServer/PyProj/basics/lesson1-2/main.py
+#	deleted:    PythonServer/PyProj/basics/lesson11-12/HW6.py
+#	deleted:    PythonServer/PyProj/basics/lesson11-12/db_start.py
+#	deleted:    PythonServer/PyProj/basics/lesson13-14/dao.py
+#	deleted:    PythonServer/PyProj/basics/lesson13-14/db.json
+#	deleted:    PythonServer/PyProj/basics/lesson3-4/HW2.py
+#	deleted:    PythonServer/PyProj/basics/lesson3-4/funk.py
+#	deleted:    PythonServer/PyProj/basics/lesson5-6/HW3.py
+#	deleted:    PythonServer/PyProj/basics/lesson5-6/db.ini
+#	deleted:    PythonServer/PyProj/basics/lesson5-6/except.py
+#	deleted:    PythonServer/PyProj/basics/lesson5-6/files.py
+#	deleted:    PythonServer/PyProj/basics/lesson7-8/HW4.py
+#	deleted:    PythonServer/PyProj/basics/lesson7-8/j.json
+#	deleted:    PythonServer/PyProj/basics/lesson7-8/start_json.py
+#	deleted:    PythonServer/PyProj/basics/lesson7-8/start_oop.py
+#	deleted:    PythonServer/PyProj/basics/lesson9-10/HW5.py
+#	deleted:    PythonServer/PyProj/basics/lesson9-10/nbu_rates.log
+#	deleted:    PythonServer/PyProj/basics/lesson9-10/start_orm.py
+#	deleted:    PythonServer/PyProj/cgi/.htaccess
+#	deleted:    PythonServer/PyProj/cgi/access_manager.py
+#	deleted:    PythonServer/PyProj/cgi/controllers/__pycache__/controller_rest.cpython-313.pyc
+#	deleted:    PythonServer/PyProj/cgi/controllers/__pycache__/discount_controller.cpython-313.pyc
+#	deleted:    PythonServer/PyProj/cgi/controllers/__pycache__/home_controller.cpython-313.pyc
+#	deleted:    PythonServer/PyProj/cgi/controllers/__pycache__/order_controller.cpython-313.pyc
+#	deleted:    PythonServer/PyProj/cgi/controllers/__pycache__/ordertest_controller.cpython-313.pyc
+#	deleted:    PythonServer/PyProj/cgi/controllers/__pycache__/user_controller.cpython-313.pyc
+#	deleted:    PythonServer/PyProj/cgi/controllers/__pycache__/usertest_controller.cpython-313.pyc
+#	deleted:    PythonServer/PyProj/cgi/controllers/controller_rest.py
+#	deleted:    PythonServer/PyProj/cgi/controllers/discount_controller.py
+#	deleted:    PythonServer/PyProj/cgi/controllers/home_controller.py
+#	deleted:    PythonServer/PyProj/cgi/controllers/order_controller.py
+#	deleted:    PythonServer/PyProj/cgi/controllers/ordertest_controller.py
+#	deleted:    PythonServer/PyProj/cgi/controllers/user_controller.py
+#	deleted:    PythonServer/PyProj/cgi/controllers/usertest_controller.py
+#	deleted:    PythonServer/PyProj/cgi/dao/__pycache__/data_accessor.cpython-313.pyc
+#	deleted:    PythonServer/PyProj/cgi/dao/__pycache__/helper.cpython-313.pyc
+#	deleted:    PythonServer/PyProj/cgi/dao/data_accessor.py
+#	deleted:    PythonServer/PyProj/cgi/dao/helper.py
+#	deleted:    PythonServer/PyProj/cgi/db.json
+#	deleted:    PythonServer/PyProj/cgi/index.html
+#	deleted:    PythonServer/PyProj/cgi/index.py
+#	deleted:    PythonServer/PyProj/cgi/logs/access.log
+#	deleted:    PythonServer/PyProj/cgi/logs/error.log
+#	deleted:    PythonServer/PyProj/cgi/models/__pycache__/request.cpython-313.pyc
+#	deleted:    PythonServer/PyProj/cgi/models/request.py
+#	deleted:    PythonServer/PyProj/cgi/notes.txt
+#	deleted:    PythonServer/PyProj/cgi/static/css/site.css
+#	deleted:    PythonServer/PyProj/cgi/static/img/Python.png
+#	deleted:    PythonServer/PyProj/cgi/static/img/m13.jpg
+#	deleted:    PythonServer/PyProj/cgi/static/js/site.js
+#	deleted:    PythonServer/PyProj/cgi/views/_layout.html
+#	deleted:    PythonServer/PyProj/cgi/views/home_index.html
+#	deleted:    PythonServer/PyProj/cgi/views/home_params.html
+#	deleted:    PythonServer/PyProj/cgi/views/home_privacy.html
+#	deleted:    PythonServer/PyProj/cgi/views/ordertest_index.html
+#	deleted:    PythonServer/PyProj/cgi/views/usertest_index.html
+#	deleted:    PythonServer/PyProj/db.ini
+#	deleted:    PythonServer/PyProj/db.json
+#	deleted:    PythonServer/PyProj/helper.py
+#	deleted:    PythonServer/PyProj/j.json
+#	deleted:    PythonServer/PyProj/practice_tasks/task01_db_json.py
+#	deleted:    PythonServer/PyProj/practice_tasks/task02_hash_digest.py
+#	deleted:    PythonServer/PyProj/practice_tasks/task03_salt.py
+#	deleted:    PythonServer/PyProj/practice_tasks/task04_random_filename.py
+#	deleted:    PythonServer/PyProj/practice_tasks/task05_otp.py
+#	deleted:    PythonServer/PyProj/practice_tasks/task06_parse_url.py
+#	deleted:    PythonServer/PyProj/practice_tasks/task07_parse_path.py
+#	deleted:    PythonServer/PyProj/practice_tasks/task08_parse_query.py
+#	deleted:    PythonServer/PyProj/practice_tasks/task09_jwt_body.py
+#	deleted:    PythonServer/PyProj/practice_tasks/task10_jwt_signature.py
+#	deleted:    PythonServer/PyProj/practice_tasks/task11_jwt_decompose.py
+#	deleted:    PythonServer/PyProj/practice_tasks/task12_jwt_verify_signature.py
+#	deleted:    PythonServer/PyProj/practice_tasks/task13_basic_auth_header.py
+#	deleted:    PythonServer/PyProj/practice_tasks/task14_jwt_time_valid_bool.py
+#	deleted:    PythonServer/PyProj/practice_tasks/task15_jwt_time_valid_seconds.py
+#	deleted:    PythonServer/PyProj/practice_tasks/task16_rest_meta.py
+#	deleted:    PythonServer/PyProj/practice_tasks/task17_rest_status.py
+#	deleted:    PythonServer/PyProj/practice_tasks/task18_jwt_compose_payload.py
+#	deleted:    PythonServer/PyProj/practice_tasks/task19_jwt_compose_user.py
+#	deleted:    PythonServer/PyProj/practice_tasks/task20_bearer_auth_header.py
+#
+# Changes not staged for commit:
+#	modified:   CW/hibernate (modified content, untracked content)
+
+
