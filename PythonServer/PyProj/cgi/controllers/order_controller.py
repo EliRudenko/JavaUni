@@ -1,12 +1,17 @@
+# datetime потрібен для server_time у метаданих.
 import datetime
+# json потрібен для серіалізації REST-відповідей.
 import json
+# sys використовується для виводу CGI-відповіді в stdout.
 import sys
 
+# CgiRequest містить дані CGI-запиту (метод, заголовки, маршрут).
 from models.request import CgiRequest 
 
 # ДЗ 5, 6, 7 — API /order, Custom-Header, REST-ответы
 # реализован REST-контроллер для заказов
 
+# REST-статус (логічний, у JSON-відповіді).
 class RestStatus:
     def __init__(self,is_ok:bool, code:int, message:str):
         self.is_ok = is_ok
@@ -14,12 +19,14 @@ class RestStatus:
         self.message = message
 
     def to_json(self):
+        # Перетворення статусу у словник для JSON.
         return {
             "isOk": self.is_ok,
             "code": self.code,
             "message": self.message
         }
 
+# Попередньо визначені REST-статуси.
 RestStatus.status200 = RestStatus(True, 200, "OK")
 RestStatus.status405 = RestStatus(False, 405, "Method Not Allowed")
 RestStatus.status201 = RestStatus(True, 201, "Created")
@@ -28,6 +35,7 @@ RestStatus.status403 = RestStatus(False, 403, "Forbidden")
 RestStatus.status404 = RestStatus(False, 404, "Not Found")
 
 
+# Дані про кешування відповіді.
 class RestCache:
     def __init__(self, exp:str|int|None=None, lifetime:int|None=None):
         self.exp = exp
@@ -43,9 +51,11 @@ class RestCache:
             data["lifetime"] = self.lifetime
         return data
 
+# Варіанти кешу: без кешування, кеш 1 година.
 RestCache.no = RestCache()
 RestCache.hrs1 = RestCache(lifetime=60*60)
 
+# Метадані REST-відповіді (сервіс, метод, кеш, час сервера).
 class RestMeta:
     def __init__(self, service:str, request_method:str, auth_user_id:str|int|None=None, data_type:str="null",
                  cache:RestCache=RestCache.no, server_time:int|None=None, params:dict|None=None, links:dict|None=None):
@@ -70,6 +80,7 @@ class RestMeta:
             "links": self.links,
         }
 
+# Структура REST-відповіді: status + meta + data.
 class RestResponse:
     def __init__(self, meta:RestMeta,
                  status:RestStatus=RestStatus.status200, data:any=None):
@@ -92,8 +103,9 @@ class OrderController:
 
 
     def _check_custom_header(self):
-        # Проверка обязательного заголовка
-        # Если его нет, возвращаем 403 и выходим из обработки
+        # Проверка обязательного заголовка.
+        # Якщо його нема — повертаємо 403 Forbidden (доступ заборонено).
+        # Це приклад авторизації по кастомному заголовку.
         header = self.request.headers.get("Custom-Header")
         
         if header is None or header.strip() == "":
@@ -105,8 +117,8 @@ class OrderController:
         return True
 
     def serve(self):
-        # Инициализация базовуй структуры REST-ответа
-        # В ответе всегда есть meta + status + data
+        # Ініціалізація базової структури REST-відповіді.
+        # Відповідь завжди містить meta + status + data.
         self.response = RestResponse(meta=RestMeta(
             service="Order API",
             request_method=self.request.request_method,
@@ -119,14 +131,14 @@ class OrderController:
             }
         ))
 
-        # Сначала проверка наличие Custom-Header
-        # Для части кнопок он не отправляется специально, чтобы получить 403
-        # нужно для демонстрации поведения API при отсутствии заголовка
+        # Спочатку перевіряємо наявність Custom-Header.
+        # Для навчання частина запитів без нього -> 403.
         if not self._check_custom_header():
             self._send_response()
             return
 
-        # Дальше выбираем метод обработки по HTTP-методу запроса
+        # Далі вибираємо метод обробки за HTTP-методом запиту.
+        # Якщо методу немає — 405 Method Not Allowed.
         action = "do_" + self.request.request_method.lower()
         controller_action = getattr(self, action, None)
         
@@ -137,12 +149,13 @@ class OrderController:
         self._send_response()
 
     def _send_response(self):
-        # Отдельная функция для вывода HTTP-ответа
-        # чтобы переиспользовать вывод в нескольких ветках
+        # Окрема функція для виводу HTTP-відповіді.
+        # Тут формуємо HTTP status line і Content-Type.
         http_status_line = f"Status: {self.response.status.code} {self.response.status.message}\n"
         sys.stdout.buffer.write(http_status_line.encode('utf-8'))
         sys.stdout.buffer.write(b"Content-Type: application/json; charset=utf-8\n\n")
 
+        # JSON-серіалізація: default=... дозволяє серіалізувати non-dict об'єкти.
         json_output = json.dumps(
             self.response,
             ensure_ascii=False,
@@ -153,7 +166,8 @@ class OrderController:
 
 
     def do_get(self):
-        # Получение заказа пример ответа
+        # GET є ідемпотентним: повторний виклик не змінює стан.
+        # Тут повертаємо приклад об'єкта замовлення.
         self.response.meta.data_type = "object"
         self.response.meta.cache = RestCache.hrs1 
         self.response.data = {
@@ -164,7 +178,7 @@ class OrderController:
         }
 
     def do_post(self):
-        # Создание заказа пример ответа
+        # POST не ідемпотентний: створює новий ресурс.
         self.response.meta.data_type = "object"
         self.response.status = RestStatus.status201 
         self.response.data = {
@@ -175,7 +189,7 @@ class OrderController:
         }
 
     def do_put(self):
-        # Полная замена заказа
+        # PUT ідемпотентний: заміна ресурсу дає однаковий результат при повторенні.
         self.response.meta.data_type = "object"
         self.response.data = {
             "order_id": 12345,
@@ -184,7 +198,7 @@ class OrderController:
         }
 
     def do_patch(self):
-        # Частичное изменение заказа
+        # PATCH частково змінює ресурс (може бути неіде-потентний).
         self.response.meta.data_type = "object"
         self.response.data = {
             "order_id": 12345,
@@ -193,7 +207,7 @@ class OrderController:
         }
 
     def do_delete(self):
-        # Удаление заказа
+        # DELETE ідемпотентний: повторне видалення не змінює результат.
         self.response.status = RestStatus.status204 
         self.response.data = None 
         self.response.meta.data_type = "null"

@@ -1,15 +1,24 @@
 <VirtualHost *:80>
+    # Віртуальний хост: дозволяє одному Apache обслуговувати кілька сайтів.
+    # Для кожного сайту задається свій ServerName/DocumentRoot.
     ServerAdmin webmaster@dummy-host.example.com
     DocumentRoot "C:/Users/morri/OneDrive/Рабочий стол/Программирование/python/cgi"
     ServerName cgi221.loc
     ServerAlias www.cgi221.loc
+    # Логи: важливі для діагностики помилок CGI-скриптів.
     ErrorLog "C:/Users/morri/OneDrive/Рабочий стол/Программирование/python/cgi/logs/error.log"
     CustomLog "C:/Users/morri/OneDrive/Рабочий стол/Программирование/python/cgi/logs/access.log" common
     <Directory "C:/Users/morri/OneDrive/Рабочий стол/Программирование/python/cgi">
+	    # AllowOverride All: дозволяє .htaccess керувати правилами (rewrite, CGI).
 	    AllowOverride All
+	    # ExecCGI: дозволяє запуск Python-скриптів як CGI.
+	    # -Indexes: забороняє лістинг файлів у директорії.
 	    Options -Indexes +ExecCGI
+	    # Вказуємо, що .py файли треба запускати як CGI-скрипти.
 	    AddHandler cgi-script .py
+	    # Доступ дозволено всім (локальний хостинг для навчання).
 	    Require all granted
+        # Індексні файли: спершу index.py, потім index.html.
         DirectoryIndex index.py index.html
     </Directory>
 </VirtualHost>
