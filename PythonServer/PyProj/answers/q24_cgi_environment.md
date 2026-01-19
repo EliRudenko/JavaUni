@@ -16,6 +16,10 @@ CGI передає дані про запит через змінні оточе
 - **Вибірка ключових змінних:** `cgi/access_manager.py` читає `REQUEST_URI`, `QUERY_STRING`, `REQUEST_METHOD`.【F:PythonServer/PyProj/cgi/access_manager.py†L40-L50】
 - **HTTP-заголовки з environment:** `cgi/access_manager.py` перетворює `HTTP_*` у нормальні заголовки.【F:PythonServer/PyProj/cgi/access_manager.py†L87-L90】
 
+## Ключевые моменты в коде
+- `cgi/index.py` — вывод переменных окружения через `os.environ`.
+- `cgi/access_manager.py` — чтение окружения для маршрутизации.
+
 ## Куди перейти в коді
 - **`cgi/index.py`** — демонстрація environment у HTML.
 - **`cgi/access_manager.py`** — реальне використання environment у маршрутизації.

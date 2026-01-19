@@ -11,6 +11,9 @@
 - **Спроба віддати статику через CGI:** `cgi/access_manager.py` читає файл і відправляє Content-Type + bytes.【F:PythonServer/PyProj/cgi/access_manager.py†L62-L85】
 - **Наявність статики:** `cgi/static/` (css/js/img) — типові статичні ресурси.
 
+## Ключевые моменты в коде
+- `cgi/access_manager.py` — выдача статических файлов и их маршрутизация.
+
 ## Куди перейти в коді
 - **`cgi/access_manager.py`** — блок роботи зі статичними файлами.
 - **`cgi/static/`** — самі статичні ресурси.

@@ -14,5 +14,9 @@
 - `basics/6_files.py` — обробка `OSError` при читанні/записі файлів.
 - `basics/11_db.py` — обробка `mysql.connector.Error` при запитах.
 
+## Ключевые моменты в коде
+- `basics/5_except.py` — try/except/else/finally как базовая обработка исключений.
+- `basics/6_files.py`/`basics/11_db.py` — обработка ошибок в файловых и БД-операциях.
+
 ## Куди перейти в коді
 - **`basics/5_except.py`** — базова схема роботи винятків.

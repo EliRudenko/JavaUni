@@ -13,6 +13,10 @@
 - **MVC-приклад:** `cgi/controllers/home_controller.py` рендерить HTML. 【F:PythonServer/PyProj/cgi/controllers/home_controller.py†L1-L90】
 - **REST-приклад:** `cgi/controllers/order_controller.py` повертає JSON-структуру. 【F:PythonServer/PyProj/cgi/controllers/order_controller.py†L1-L166】
 
+## Ключевые моменты в коде
+- `cgi/access_manager.py` — динамический импорт контроллеров.
+- `cgi/controllers/home_controller.py` и `order_controller.py` — примеры контроллеров (MVC/API).
+
 ## Куди перейти в коді
 - **`cgi/access_manager.py`** — динамічне підключення контролера.
 - **`cgi/controllers/home_controller.py`** — HTML/MVC.

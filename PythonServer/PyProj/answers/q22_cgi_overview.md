@@ -13,6 +13,9 @@ CGI (Common Gateway Interface) — це стандарт взаємодії ве
 - **Мінімальний CGI-приклад:** `cgi/index.py` формує HTML-відповідь і показує environment.【F:PythonServer/PyProj/cgi/index.py†L1-L60】
 - **Центральний CGI-диспетчер:** `cgi/access_manager.py` — єдина точка входу, маршрутизація, запуск контролерів.【F:PythonServer/PyProj/cgi/access_manager.py†L1-L181】
 
+## Ключевые моменты в коде
+- `cgi/index.py` и `cgi/access_manager.py` — примеры CGI-скриптов и их структуры.
+
 ## Куди перейти в коді
 - **`cgi/index.py`** — базова демонстрація CGI-виконання.
 - **`cgi/access_manager.py`** — повний механізм запит → маршрут → контролер.

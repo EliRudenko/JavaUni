@@ -12,5 +12,8 @@
 - **Path-based:** `cgi/access_manager.py` розбирає `/controller/action`.【F:PythonServer/PyProj/cgi/access_manager.py†L95-L129】
 - **Prefix routing:** `cgi/access_manager.py` підтримує формат `/lang/Controller/Action/Id`.【F:PythonServer/PyProj/cgi/access_manager.py†L95-L125】
 
+## Ключевые моменты в коде
+- `cgi/access_manager.py` — разбор маршрута и выбор контроллера.
+
 ## Куди перейти в коді
 - **`cgi/access_manager.py`** — блок розбору маршруту.

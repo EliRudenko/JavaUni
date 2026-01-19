@@ -12,6 +12,10 @@
 - **Логи Apache:** `cgi/notes.txt` вказує `ErrorLog` та `CustomLog`.【F:PythonServer/PyProj/cgi/notes.txt†L8-L10】
 - **Повернення 500:** `cgi/access_manager.py` повертає 500 при винятку в контролері (DEV_MODE).【F:PythonServer/PyProj/cgi/access_manager.py†L172-L179】
 
+## Ключевые моменты в коде
+- `cgi/access_manager.py` — обработка ошибок и выдача диагностических статусов.
+- `cgi/notes.txt` — error/access логи для диагностики CGI.
+
 ## Куди перейти в коді
 - **`cgi/notes.txt`** — шлях до логів.
 - **`cgi/access_manager.py`** — логіка повернення 500.

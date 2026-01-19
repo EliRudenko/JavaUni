@@ -22,6 +22,13 @@ Python — інтерпретована високорівнева мова 3-г
   - функціонально: `basics/4_lambda.py`, `basics/12_generators.py`.
 - **Динамічна типізація:** приклади з різними типами у `basics/2_types.py`.
 
+## Ключевые моменты в коде
+- `basics/2_types.py` — показаны базовые типы и динамическая типизация (тип определяется значением переменной).
+- `basics/3_funcs.py` — демонстрация функций и процедурного стиля как одной из парадигм Python.
+- `basics/8_oop1.py`/`basics/9_oop2.py` — ООП-парадигма: классы, методы, инкапсуляция.
+- `basics/4_lambda.py`/`basics/12_generators.py` — функциональный стиль: lambda и генераторы.
+- `cgi/index.py`/`cgi/access_manager.py` — CGI-скрипты показывают интерпретируемое выполнение через shebang.
+
 ## Куди перейти в коді
 - Перегляньте **`cgi/index.py`** і **`cgi/access_manager.py`** — там видно shebang та принцип інтерпретованого запуску у CGI.
 - Перегляньте **`basics/2_types.py`**, **`basics/3_funcs.py`**, **`basics/8_oop1.py`**, **`basics/9_oop2.py`**, **`basics/4_lambda.py`**, **`basics/12_generators.py`** — там демонструються різні парадигми та типи.

@@ -12,6 +12,10 @@
 - **REST-серіалізація:** `cgi/controllers/controller_rest.py` використовує `default=lambda x: x.to_json() ...`.【F:PythonServer/PyProj/cgi/controllers/controller_rest.py†L104-L112】
 - **OrderController:** також використовує `default=...` для non-dict типів.【F:PythonServer/PyProj/cgi/controllers/order_controller.py†L110-L120】
 
+## Ключевые моменты в коде
+- `cgi/controllers/controller_rest.py` — JSON-ответы и сериализация данных.
+- `cgi/controllers/order_controller.py` — JSON для пользовательских объектов и статусов.
+
 ## Куди перейти в коді
 - **`cgi/controllers/controller_rest.py`** — базова JSON-серіалізація.
 - **`cgi/controllers/order_controller.py`** — аналогічна логіка у REST-відповіді.

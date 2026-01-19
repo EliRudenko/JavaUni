@@ -24,6 +24,10 @@
 - **Типи та конвертації:** `basics/2_types.py` — усі базові приклади.
 - **Типи при JSON:** `basics/7_json.py` — показує, як JSON `null` стає Python `None`, а `true/false` -> `bool`.
 
+## Ключевые моменты в коде
+- `basics/2_types.py` — int/float/str/bool/None и явные преобразования типов.
+- `basics/7_json.py` — соответствие типов Python и JSON (None/null, bool/true-false).
+
 ## Куди перейти в коді
 - **`basics/2_types.py`** — повний приклад типів і конвертацій.
 - **`basics/7_json.py`** — мапінг типів між JSON і Python.

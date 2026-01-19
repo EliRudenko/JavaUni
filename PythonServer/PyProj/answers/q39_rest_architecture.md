@@ -14,6 +14,10 @@ REST — це стиль побудови веб-сервісів, де ресу
 - **REST-сервіс Orders:** `cgi/controllers/order_controller.py` — реалізація CRUD. 【F:PythonServer/PyProj/cgi/controllers/order_controller.py†L1-L166】
 - **REST-сервіс Users:** `cgi/controllers/user_controller.py` — авторизація та видача токена. 【F:PythonServer/PyProj/cgi/controllers/user_controller.py†L1-L102】
 
+## Ключевые моменты в коде
+- `cgi/controllers/controller_rest.py` — REST-стиль ответов и структура ресурса.
+- `cgi/controllers/order_controller.py`/`user_controller.py` — реализация REST-методов для ресурсов.
+
 ## Куди перейти в коді
 - **`cgi/controllers/controller_rest.py`** — базовий шаблон REST.
 - **`cgi/controllers/order_controller.py`** — конкретна реалізація REST-методів.
