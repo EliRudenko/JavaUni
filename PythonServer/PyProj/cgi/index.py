@@ -1,12 +1,18 @@
+# Шебанг вказує інтерпретатор Python для CGI.
 #!C:/Users/morri/AppData/Local/Programs/Python/Python313/python.exe
 
+# os потрібен для доступу до змінних оточення (CGI-параметри).
 import os
+# sys потрібен для налаштування stdout та виводу байтів.
 import sys
 
+# Перемикаємо кодування stdout, щоб коректно віддавати UTF-8.
 sys.stdout.reconfigure(encoding='utf-8')
 
+# CGI передає параметри запиту через змінні оточення.
 sorted_envs = sorted(os.environ.items(), key=lambda item: item[0])
 
+# Формуємо HTML-таблицю зі змінних оточення.
 table_rows = "".join(f"<tr><td>{k}</td><td>{v}</td></tr>\n" for k, v in sorted_envs)
 envs_table = f"""
 <table border="1" cellpadding="5" cellspacing="0">
@@ -22,6 +28,7 @@ envs_table = f"""
 </table>
 """
 
+# Повний HTML-документ як рядок.
 html = f'''
 <!DOCTYPE html>
 <html lang="uk">
@@ -39,7 +46,8 @@ html = f'''
 </html>
 '''
 
-print("Content-Type: text/html; charset=utf-8\n")
-print("Content-Length:", len(html.encode('utf-8')))
-print()
-print(html)
+# CGI-відповідь складається з HTTP-заголовків + порожній рядок + тіло.
+print("Content-Type: text/html; charset=utf-8\n")  # Заголовок типу контенту.
+print("Content-Length:", len(html.encode('utf-8')))  # Довжина відповіді.
+print()  # Порожній рядок відділяє заголовки від тіла.
+print(html)  # Тіло відповіді.

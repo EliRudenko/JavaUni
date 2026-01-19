@@ -1,29 +1,30 @@
 # ДЗ 1 PBKDF2 (RFC2898) + ДЗ 2: Реєстрація з датою народження
 # БД и хеширование паролей
 
-from datetime import datetime          # работа с датами (дата рождения, проверка "не из будущего")
-import hmac                            # HMAC нужен для PBKDF2 (RFC2898)
-import json                            # читаем настройки БД из JSON
-from math import ceil                  # округление вверх для расчёта блоков PBKDF2
+# Імпорти стандартних/зовнішніх модулів для роботи з БД і криптографією.
+from datetime import datetime          # робота з датами (дата народження, перевірка "не з майбутнього")
+import hmac                            # HMAC потрібен для PBKDF2 (RFC2898)
+import json                            # читаємо налаштування БД з JSON
+from math import ceil                  # округлення вгору для розрахунку блоків PBKDF2
 import mysql.connector                 # драйвер MySQL
-import sys                             # системные данные, полезно для ошибок
-import hashlib                         # базовые хеш-функции
-import helper                          # вспомогательные функции (например, генерация соли)
+import sys                             # системні дані, корисно для помилок
+import hashlib                         # базові хеш-функції
+import helper                          # допоміжні функції (наприклад, генерація солі)
 
 class DataAccessor:
     def __init__(self, ini_file: str = './db.json'):
-        # Читаем конфигурацию подключения к БД из JSON-файла, позволяет не хранить пароли прямо в коде
+        # Читаємо конфігурацію підключення до БД з JSON-файла.
         try:
             with open(ini_file, 'r', encoding='utf-8') as f:
-                self.ini = json.load(f)          # словарь с параметрами подключения
+                self.ini = json.load(f)          # словник з параметрами підключення.
         except OSError as err:
-            # Если конфиг отсутствует — работа невозможна
+            # Якщо конфіг відсутній — робота неможлива.
             raise RuntimeError("Неможливо продовжити без конфігурації бази даних.")
         try:
-            # Подключаемся к MySQL с параметрами из конфигурации
+            # Підключаємося до MySQL з параметрами з конфігурації.
             self.db_connection = mysql.connector.connect(**self.ini)
         except mysql.connector.Error as err:
-            # Если соединение не получилось выводим ошибку
+            # Якщо з'єднання не вдалось, повідомляємо помилку.
             raise RuntimeError("Неможливо продовжити без підключення до бази даних.")
     
     def install(self):
@@ -305,10 +306,8 @@ class DataAccessor:
             print(err)
 
     def authenticate(self, login: str, password: str) -> dict | None:
-        # Проверяем пользователя по логину и derived key
-        # пользователя из БД
-        # счет DK по паролю и соли
-        # сравнение DK
+        # Перевірка користувача за логіном і derived key (DK).
+        # SQL виконує JOIN між users і accesses.
         sql = '''SELECT *
                 FROM users u
                 JOIN accesses a ON a.user_id = u.user_id
@@ -318,11 +317,11 @@ class DataAccessor:
             raise RuntimeError("Немає підключення до бази даних" + sys._getframe().f_code.co_name)
         with self.db_connection.cursor(dictionary=True) as cursor:
             try:
-                cursor.execute(sql, (login,))           # поиск по логину
-                row = next(cursor, None)                # первая найденная запись
+                cursor.execute(sql, (login,))           # Параметризований запит.
+                row = next(cursor, None)                # Перша знайдена запис.
                 if row is None:
-                    return None                         # пользователь не найден
-                dk = self.kdf1(password, row['user_access_salt'])  # DK из пароля
+                    return None                         # Користувача не знайдено.
+                dk = self.kdf1(password, row['user_access_salt'])  # DK із пароля + солі.
                 return row if dk == row['user_access_dk'] else None
             except mysql.connector.Error as err:
                 print(f"Помилка виконання запиту: {err}")
