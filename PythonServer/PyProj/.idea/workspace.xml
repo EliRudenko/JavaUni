@@ -6,44 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="4984a6ee-9554-42e7-92e6-ec707876b415" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/../../CW/hibernate" beforeDir="false" afterPath="$PROJECT_DIR$/../../CW/hibernate" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HW/01_pbkdf2/info.md" beforeDir="false" afterPath="$PROJECT_DIR$/HW/01_pbkdf2/info.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HW/02_birthdate_registration/info.md" beforeDir="false" afterPath="$PROJECT_DIR$/HW/02_birthdate_registration/info.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HW/03_route_analysis/info.md" beforeDir="false" afterPath="$PROJECT_DIR$/HW/03_route_analysis/info.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HW/04_home_params/info.md" beforeDir="false" afterPath="$PROJECT_DIR$/HW/04_home_params/info.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HW/05_order_api/info.md" beforeDir="false" afterPath="$PROJECT_DIR$/HW/05_order_api/info.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HW/06_order_custom_header/info.md" beforeDir="false" afterPath="$PROJECT_DIR$/HW/06_order_custom_header/info.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HW/07_order_rest/info.md" beforeDir="false" afterPath="$PROJECT_DIR$/HW/07_order_rest/info.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HW/08_usertest_errors/info.md" beforeDir="false" afterPath="$PROJECT_DIR$/HW/08_usertest_errors/info.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HW/09_token_header_view/info.md" beforeDir="false" afterPath="$PROJECT_DIR$/HW/09_token_header_view/info.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HW/10_jwt_cty_nested/info.md" beforeDir="false" afterPath="$PROJECT_DIR$/HW/10_jwt_cty_nested/info.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HW/11_jwt_claims_validation/info.md" beforeDir="false" afterPath="$PROJECT_DIR$/HW/11_jwt_claims_validation/info.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HW/12_usertest_summary/info.md" beforeDir="false" afterPath="$PROJECT_DIR$/HW/12_usertest_summary/info.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HW/screenshots/info.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/basics/12_dao.py" beforeDir="false" afterPath="$PROJECT_DIR$/basics/1_2_dao.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cgi/access_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/cgi/access_manager.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cgi/controllers/home_controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/cgi/controllers/home_controller.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cgi/controllers/order_controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/cgi/controllers/order_controller.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cgi/controllers/user_controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/cgi/controllers/user_controller.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cgi/dao/data_accessor.py" beforeDir="false" afterPath="$PROJECT_DIR$/cgi/dao/data_accessor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cgi/dao/helper.py" beforeDir="false" afterPath="$PROJECT_DIR$/cgi/dao/helper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cgi/models/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/cgi/models/request.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cgi/static/js/site.js" beforeDir="false" afterPath="$PROJECT_DIR$/cgi/static/js/site.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cgi/views/usertest_index.html" beforeDir="false" afterPath="$PROJECT_DIR$/cgi/views/usertest_index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/assignments.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/assignments/01_pbkdf2/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/assignments/02_birthdate_registration/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/assignments/03_route_analysis/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/assignments/04_home_params/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/assignments/05_order_api/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/assignments/06_order_custom_header/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/assignments/07_order_rest/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/assignments/08_usertest_errors/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/assignments/09_token_header_view/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/assignments/10_jwt_cty_nested/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/assignments/11_jwt_claims_validation/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/assignments/12_usertest_summary/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/screenshots/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,7 +59,8 @@
       <workItem from="1768504452560" duration="300000" />
       <workItem from="1768505333172" duration="21000" />
       <workItem from="1768505355862" duration="19000" />
-      <workItem from="1768505431943" duration="8726000" />
+      <workItem from="1768505431943" duration="10963000" />
+      <workItem from="1768836049506" duration="560000" />
     </task>
     <servers />
   </component>
