@@ -1,22 +1,28 @@
+# datetime потрібен для перевірки time-claims (iat/nbf/exp).
 import datetime
+# hashlib/hmac/base64/json/re/binascii — інструменти для JWT та валідації.
 import hashlib,hmac,random,string,base64,json, re, binascii
+# uuid потрібен для перевірки формату суб'єкта (sub).
 import uuid
 
+# CgiRequest використовується для читання заголовків Authorization.
 from models.request import CgiRequest
 
-# ДЗ 10, 11 — Валидация JWT, nested JWT по cty=JWT, проверка claims
-# "конспект" по JWT: подпись, base64url, time-claims
+# ДЗ 10, 11 — Валідація JWT, nested JWT по cty=JWT, перевірка claims.
+# Це "конспект" по JWT: підпис, base64url, time-claims.
 
 
 def jwt_payload_from_request(request:CgiRequest, required: bool=False) -> dict|None:
+    # Витягуємо payload з JWT у заголовку Authorization: Bearer <token>.
+    # Якщо required=True — помилка піднімається наверх.
 
     try:
-        # Извлекаем Bearer-токен из заголовка
-        #Декодируем JWT и проверяем подпись
+        # Витягуємо Bearer-токен із заголовка.
+        # Декодуємо JWT і перевіряємо підпис.
         payload = get_payload_from_jwt(get_bearer(request))
-        # Проверяем время жизни iat/nbf/exp
+        # Перевіряємо час життя iat/nbf/exp.
         validate_jwt_time(payload)
-        # Проверяем claims sub/iss/name/email
+        # Перевіряємо claims sub/iss/name/email.
         validate_jwt_claims(payload)
     except ValueError as e:
         if required:
@@ -27,9 +33,9 @@ def jwt_payload_from_request(request:CgiRequest, required: bool=False) -> dict|N
     
 
 def validate_jwt_time(payload:dict, max_time:int=1000) -> None:
-    # Валидация стандартных временных полей JWT
-    # контролируем: токен не из будущего, токен не просрочен
-    # и что максимальная длительность жизни не превышена
+    # Валідація стандартних часових полів JWT.
+    # Контролюємо: токен не з майбутнього, токен не прострочений,
+    # і що максимальна тривалість життя не перевищена.
     if not ("iat" in payload or "nbf" in payload or "exp" in payload):
         raise ValueError("Token must include 'iat' and at least one of 'nbf' or 'exp'")
     now = datetime.datetime.now().timestamp()
@@ -47,8 +53,8 @@ def validate_jwt_time(payload:dict, max_time:int=1000) -> None:
             raise ValueError("Max validity time exceeded")
 
 def validate_jwt_claims(payload: dict, issuer: str = "Server-KN-P-221") -> None:
-    # Проверяем обязательные поля, формат UUID и соответствие issuer
-    # Данные проверки нужны для учебного задания по расширенной валидации
+    # Перевіряємо обов'язкові поля, формат UUID і відповідність issuer.
+    # Ці перевірки демонструють розширену валідацію.
     if "sub" not in payload:
         raise ValueError("Token must include 'sub' claim")
 
@@ -76,7 +82,8 @@ def validate_jwt_claims(payload: dict, issuer: str = "Server-KN-P-221") -> None:
 
 
 def get_bearer(request:CgiRequest) -> str:
-    # Извлекаем Bearer-токен используется для JWT
+    # Витягуємо Bearer-токен: Authorization: Bearer <token>.
+    # Якщо заголовка немає — це 401 Unauthorized на рівні контролера.
     auth_header = request.headers.get("Authorization", None)
     if not auth_header:
         raise ValueError("Unauthorized: Missing 'Authorization' header")
@@ -89,14 +96,14 @@ def get_bearer(request:CgiRequest) -> str:
 
 
 def get_payload_from_jwt(jwt:str) -> dict:
-    # Проверка формата JWT header.payload.signature
-    # Если формат нарушен  сразу отдаём понятную ошибку
+    # Перевірка формату JWT: header.payload.signature.
+    # Якщо формат порушений — повертаємо зрозумілу помилку.
     if '.' not in jwt:
         raise ValueError("Invalid token format (missing parts separator)")
     
     jwtSplitted = jwt.split('.')
     
-    non64char = re.compile(r'[^a-zA-Z0-9\-\_=]')
+    non64char = re.compile(r'[^a-zA-Z0-9\-\_=]')  # Допустимі символи base64url.
     if re.search(non64char, jwtSplitted[0]) != None:
         raise ValueError(f"Invalid token header format (invalid non-base64 character) `{joseHeader}`")
     
@@ -115,8 +122,8 @@ def get_payload_from_jwt(jwt:str) -> dict:
     if not joseHeader["alg"] in ("HS256", "HS384", "HS512",):
         raise ValueError("Invalid token header data (unsupported 'alg ' field)")
     
-    # Проверка подписи JWT
-    # Сверяем подпись, чтобы убедиться что токен не подменён
+    # Перевірка підпису JWT.
+    # Порівнюємо підпис, щоб упевнитися, що токен не підмінено.
     if len(jwtSplitted) != 3:
         raise ValueError("Invalid token format (invalid parts count)")
     signedPart = jwtSplitted[0] + '.' + jwtSplitted[1]
@@ -124,15 +131,15 @@ def get_payload_from_jwt(jwt:str) -> dict:
 
     if testSignature != jwtSplitted[2]:
         raise ValueError("Unauthorized: Invalid token signature")
-    # Декодирование payload
-    # Если payload  это строка nested JWT, обработаем отдельно
+    # Декодування payload.
+    # Якщо payload — рядок nested JWT, обробляємо окремо.
     try:
         payload = b64_to_obj(jwtSplitted[1])
     except ValueError:
         payload_raw = base64.urlsafe_b64decode(jwtSplitted[1]).decode("utf-8")
 
         if joseHeader.get("cty") == "JWT":
-            # Вложенный JWT продолжаем разбор по стандарту ДЗ 10 !!!
+            # Вкладений JWT: продовжуємо розбір за стандартом ДЗ 10.
             return get_payload_from_jwt(payload_raw)
 
         raise ValueError("Invalid token payload")
@@ -153,7 +160,7 @@ def get_payload_from_jwt(jwt:str) -> dict:
 
 
 def b64_to_obj(input:str) -> dict:
-        #  функция перевод Base64URL > JSON объект
+        # Функція: Base64URL -> JSON-об'єкт (dict).
         non64char = re.compile(r'[^a-zA-Z0-9\-\_=]')
         if re.search(non64char, input) != None:
             raise ValueError(f"invalid non-base64 character `{input}`")
@@ -175,7 +182,7 @@ def b64_to_obj(input:str) -> dict:
 
 
 def compose_jwt(payload:dict, typ:str="JWT", header:dict|None = None, alg:str = "HS256", secret_key:bytes|None = None) -> str:
-    # Создаём JWT base64url header + base64url payload + signature
+    # Створюємо JWT: base64url(header) + base64url(payload) + signature.
     header = {
         "alg": alg,
         "typ": typ
@@ -191,6 +198,7 @@ def compose_jwt(payload:dict, typ:str="JWT", header:dict|None = None, alg:str = 
     return b'.'.join([body, signature.encode("ascii")]).decode("ascii")
 
 def get_signature(data:bytes, secret_key:bytes|None = None, alg:str = "HS256", form:str = "base64url") -> str:
+    # HMAC-підпис для JWT. form визначає формат виходу (base64url/hex).
     if secret_key is None:
         secret_key = "secret".encode()
     if alg == "HS256":
@@ -214,6 +222,7 @@ def get_signature(data:bytes, secret_key:bytes|None = None, alg:str = "HS256", f
     
 
 def generate_salt(length:int=16) -> str:
+    # Генерація випадкової солі для зберігання паролів.
     symbols = string.ascii_letters + string.digits
     return ''.join(random.choice(symbols) for _ in range(length))
 
